@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.lejos.ev3.ldt.LEJOS_EV3_LIBRARY_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/commons-cli.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/dbusjava.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/ev3classes.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/ev3tools.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jcommon.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jfreechart.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jsch-0.1.50.jar"/>
+	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/opencv-2411.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

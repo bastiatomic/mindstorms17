@@ -1,0 +1,5 @@
+largeGearTeeths = 36 x
+smallGearTeehts = 12 x
+
+chainScope = 135.7168 mm
+wheelScope = 121.0 mm
