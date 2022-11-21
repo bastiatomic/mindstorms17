@@ -9,9 +9,13 @@ public class scratch2 {
 
         moveHeadToPositionByTime(0, 0, 10, 10, 10);
 
+        move(20, 20, 2000); //move(int x, int y, int mmSec)
+
+
     }
     public static void moveHeadToPositionByTime(int startX, int startY, int endX, int endY, int desiredTime){
-        double outputOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36;
+
+        double outputOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //cm distance of 1 degree
         double outputOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36;
 
         if(!moveHeadToPositionVerifier( startX,  startY,  endX,  endY,  desiredTime)){return;}
@@ -19,31 +23,48 @@ public class scratch2 {
         double lengthA = endX - startX;
         double lengthB = endY - startY;
 
-        double finalLength = Math.sqrt(Math.pow(lengthA, 2) + Math.pow(lengthB, 2)); // C
+        //double finalLength = Math.sqrt(Math.pow(lengthA, 2) + Math.pow(lengthB, 2)); // C
 
-        double pythagorasLengthA = Math.sqrt(Math.pow(finalLength, 2) - Math.pow(lengthB, 2));
-        double pythagorasLengthB = Math.sqrt(Math.pow(finalLength, 2) - Math.pow(lengthA, 2));
+        double rotationsNeededA = lengthA / outputOneDegreeMotorWheelMotor;
+        double rotationsNeededB = lengthB / outputOneDegreeMotorChainMotor;
 
-        //hypotenuse = C = sqrt(A^2 + B ^2)
-        // A = sqrt(C^2 - B^2)
-        // B = sqrt(C^2 - A^2)
-
-        double rotationsNeededA = pythagorasLengthA / outputOneDegreeMotorWheelMotor;
-        double rotationsNeededB = pythagorasLengthB / outputOneDegreeMotorChainMotor;
-
-        double speedA = rotationsNeededA / desiredTime; // send us to .setspeed()
+        double speedA = rotationsNeededA / desiredTime;
         double speedB = rotationsNeededB / desiredTime;
+
+        double oldSpeedA = speedA;
+        double oldSpeedB = speedB;
+
+        speedA = 10; // magic number WIP // send us to .setspeed()
+        speedB = oldSpeedB * speedA/oldSpeedA;
 
         System.out.println("Motor A rotates at " + speedA+".");
         System.out.println("Motor B rotates at " + speedB+".");
         System.out.println("For the duration of " + desiredTime + " sec."); 
 
+        System.out.println("factor: " + (double) speedA/speedB);
+    
+   
+
         //TODO: Remove time variable entirely and the program figures out it speed itself to align with 'double to int conversion'
+
+        /*What happens here: move both motors at each speed for 'timeForLength' seconds synchronized
+            a.synchronizeWith(new RegulatedMotor[] { b });
+            a.startSynchronization();
+            a.setSpeed( (int)speedA); //WARNING: conversion to int
+            b.setSpeed( (int) speedB);
+            a.moveDegrees(rotationsNeededA)
+            a.moveDegrees(rotationsNeededB)
+            //Delay.msDelay( (long) timeForLength*1000);
+            a.endSynchronization();
+            a.waitComplete();
+            b.waitComplete();*/
     }
 
+    public static void move(int x, int y, int mmSec){
+        moveHeadToPositionByTime(0,0,x,y, mmSec * 1000);
+    }
 
-
-    public static void moveHeadToPosition(int startX, int startY, int endX, int endY, int speed){
+    public static void moveHeadToPositionBySpeed(int startX, int startY, int endX, int endY, int speed){
         
         if(moveHeadToPositionVerifier( startX,  startY,  endX,  endY,  speed)){
 
