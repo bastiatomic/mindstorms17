@@ -24,30 +24,27 @@ public class Roboter {
 
     void move(int x, int y){
 
-        double outputOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //cm distance of 1 degree
-        double outputOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36;
+        double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //cm distance of 1 degree
+        double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36;
         
         double lengthA = x - this.current_pos[0];
         double lengthB = y - this.current_pos[1];
 
         //double finalLength = Math.sqrt(Math.pow(lengthA, 2) + Math.pow(lengthB, 2)); // C
 
-        double rotationsNeededA = lengthA / outputOneDegreeMotorWheelMotor;
-        double rotationsNeededB = lengthB / outputOneDegreeMotorChainMotor;
+        double rotationsNeededA = lengthA / distanceOneDegreeMotorChainMotor;
+        double rotationsNeededB = lengthB / distanceOneDegreeMotorWheelMotor;
 
-        /*
-        double speedA = rotationsNeededA / desiredTime;
-        double speedB = rotationsNeededB / desiredTime;
-
-        double oldSpeedA = speedA;
-        double oldSpeedB = speedB;
-
-        speedA = 10; // magic number WIP // send us to .setspeed()
-        speedB = oldSpeedB * speedA/oldSpeedA;*/
+        
+        double speedA = 10; // magic number
+        double timeForLength = rotationsNeededA / speedA;
+        double speedB = rotationsNeededB / timeForLength;
 
         /*What happens here: move both motors at each speed for 'timeForLength' seconds synchronized*/
         this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
         this.chainMotor.startSynchronization();
+        this.chainMotor.setSpeed( (int) speedA);
+        this.wheelMotor.setSpeed( (int) speedB);
         this.chainMotor.rotate( (int) rotationsNeededA); //WARNING: conversion to int
         this.wheelMotor.rotate( (int) rotationsNeededB);
         //Delay.msDelay( (long) timeForLength*1000);
