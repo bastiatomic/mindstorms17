@@ -24,11 +24,11 @@ public class Main {
 
 		Delay.msDelay(1000); // generates FPS's amount of calls
 		LCD.clear();
-		LCD.drawString("Hello Mom!", 0, 0);
+		LCD.drawString("Soo ...!", 0, 0);
 
-		myRobot.driveToHome();
+		myRobot.move(10, 10);
+		//myRobot.driveToHome();
 
-		// fahreTurmAuf0Punkt(kettenMotor);
 		LCD.drawString("Returning", 0, 0);
 
 		// bestimmeHelligkeit(lightSensor);
@@ -39,28 +39,7 @@ public class Main {
 
 	}
 
-	public static void driveWheelGearToZero(RegulatedMotor m, EV3ColorSensor sensor) throws InterruptedException {
-		sensor.setFloodlight(false);
-		LCD.drawString("Init", 2, 2);
-		LCD.setAutoRefresh(false);
-		SensorMode ambientSensorMode = sensor.getAmbientMode();
-		float[] sample = new float[ambientSensorMode.sampleSize()];
-		m.setSpeed(20);
-		float baseLight = 100;
-
-		// while (baseLight-0.02 >= fixedLightAverage)
-		while (baseLight > 0.08) { // checked while baseLight is smaller 0.04 than fixedLightAverage
-			ambientSensorMode.fetchSample(sample, 0);
-			baseLight = sample[0];
-			m.backward();
-			LCD.refresh();
-			LCD.clear();
-			LCD.drawString("Intensity: " + sample[0], 1, 1);
-			Thread.sleep(100);
-		}
-		// sensor.close();
-
-	}
+	
 
 	public static void move(int distance, int mmSec, Port motorport) {
 

@@ -1,9 +1,11 @@
 package mindstorms17;
 
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.SensorMode;
 import lejos.robotics.RegulatedMotor;
+import lejos.utility.Delay;
 
 public class Roboter {
     String name;
@@ -65,8 +67,34 @@ public class Roboter {
 		}
 		m.stop();
 
-        //TODO: implement method to check the relative light change (get base value, calculate offset (-0.4) and return true if met)
+        Delay.msDelay(2000); 
+        this.colorSensor.setFloodlight(false);
+        LCD.drawString("Init", 2, 2);
+        LCD.setAutoRefresh(false);
+        SensorMode ambientSensorMode = this.colorSensor.getAmbientMode();
+        float[] sample1 = new float[ambientSensorMode.sampleSize()];
+        m.setSpeed(20);
 
+        // get the current light intensity
+        float initValue = 0;
+        for (int i = 0; i < 10; i++) {
+            initValue += sample1[0];
+            Delay.msDelay(10);
+        }
+        initValue = initValue/10;
+        float thresHold = (float) (initValue -0.04); // -0.04 is a magic number
+
+        while (initValue > thresHold) {
+            ambientSensorMode.fetchSample(sample, 0);
+            initValue = sample[0];
+            m.backward();
+            LCD.refresh();
+            LCD.clear();
+            LCD.drawString("Intensity: " + sample[0], 1, 1);
+            Delay.msDelay(1000);
+        }
+        //TODO: technical difference between Thread.sleep and Delay.msDelay
+        // sensor.close();
     }
 
 }
