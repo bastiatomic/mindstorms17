@@ -14,6 +14,7 @@ import lejos.utility.Delay;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
+		//TODO: make cursive font in ONE connected line. each letter has a start and stop and some form of magic connection
 
 		// init all objects
 		Robot myRobot = new Robot("ascende_superios", new int[] { 0, 0 }, false,
@@ -29,6 +30,8 @@ public class Main {
 		//question: is 50x 1 degree the same as 1x 50 degree
 		for (int i = 0; i < 50; i++) {
 			myRobot.chainMotor.rotate(1);
+			LCD.clear();
+			LCD.drawString(i+"", 0, 0);
 			Delay.msDelay(10);
 		}
 		Delay.msDelay(1000);
