@@ -7,7 +7,7 @@ import lejos.hardware.sensor.SensorMode;
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
-public class Roboter {
+public class Robot {
     String name;
     int[] current_pos;
     boolean head_position;
@@ -17,7 +17,7 @@ public class Roboter {
     EV3ColorSensor colorSensor;
 
 
-    Roboter(String a, int[] b, boolean c,
+    Robot(String a, int[] b, boolean c,
             RegulatedMotor d, RegulatedMotor e, EV3TouchSensor f, EV3ColorSensor g){
         this.name = a; this.current_pos = b; this.head_position = c;
         this.chainMotor = d; this.wheelMotor = e; this.touchSensor = f; this.colorSensor = g;
@@ -27,7 +27,7 @@ public class Roboter {
     void move(int x, int y){ //distance in mm;
 
         double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //mm distance of 1 degree
-        double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36;
+        double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; //TODO: abstract into classes
         
         double lengthA = x - this.current_pos[0];
         double lengthB = y - this.current_pos[1];

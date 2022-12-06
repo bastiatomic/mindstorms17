@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 
 		// init all objects
-		Roboter myRobot = new Roboter("ascende_superios", new int[] { 0, 0 }, false,
+		Robot myRobot = new Robot("ascende_superios", new int[] { 0, 0 }, false,
 				new EV3LargeRegulatedMotor(MotorPort.A),
 				new EV3LargeRegulatedMotor(MotorPort.B),
 				new EV3TouchSensor(SensorPort.S1),
@@ -26,11 +26,20 @@ public class Main {
 		LCD.clear();
 		LCD.drawString("Soo ...!", 0, 0);
 
+		//question: is 50x 1 degree the same as 1x 50 degree
+		for (int i = 0; i < 50; i++) {
+			myRobot.chainMotor.rotate(1);
+			Delay.msDelay(10);
+		}
+		Delay.msDelay(1000);
+		myRobot.chainMotor.rotate(50);
+		
+		/* 
 		myRobot.move(20, -20); // positive integer drives to their sensor
 		myRobot.move(-20, -20);
 		myRobot.move(-20, 20);
 		myRobot.move(20, 20); // 15mm
-		//myRobot.driveToHome();
+		//myRobot.driveToHome();*/
 
 		LCD.drawString("Returning", 0, 0);
 
