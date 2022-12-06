@@ -36,7 +36,28 @@ public class Main {
 		}
 		Delay.msDelay(1000);
 		myRobot.chainMotor.rotate(50);
-		
+
+		Delay.msDelay(5000);
+		int speedFactor = 100;
+		int radius = 1;
+		int speedX; int speedY;
+		double magicTranslator = 1.258045884996927; // wanna dig down the rabbit hole of that number?
+
+		for (int angle = 0; angle < 360; angle++) {
+
+			speedX  =(int) (speedFactor*radius * Math.cos(angle * 3.141 / 180));
+			myRobot.chainMotor.setSpeed(  speedX );
+
+			speedY = (int) ((speedFactor*radius * Math.sin(angle * 3.141 / 180)) * magicTranslator);
+			myRobot.wheelMotor.setSpeed( speedY );
+
+			LCD.clear();
+			LCD.drawString(speedX+"|"+speedY, 0, 0);
+
+			Delay.msDelay(10);
+		}
+
+
 		/* 
 		myRobot.move(20, -20); // positive integer drives to their sensor
 		myRobot.move(-20, -20);

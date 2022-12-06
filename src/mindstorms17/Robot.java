@@ -29,8 +29,8 @@ public class Robot {
 
     void move(int x, int y){ //distance in mm;
 
-        double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //mm distance of 1 degree
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; //TODO: abstract into classes
+        double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //mm distance of 1 degree  
         
         double lengthA = x - this.current_pos[0];
         double lengthB = y - this.current_pos[1];

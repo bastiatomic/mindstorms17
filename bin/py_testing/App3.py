@@ -30,8 +30,8 @@ def main ():
     angle = 0
     speedX = 100
     speedY = 100
+    speedFactor  =100
     WIN.set_at(center, (0,255,0))
-    speedFactor = 0.05
 
     # The main game loop
     while looping :
@@ -46,24 +46,23 @@ def main ():
                 sys.exit()
 
         # how it works: assume (0,0) and head up; drive to first location, head switch, drive to next ... repeat
+        if(angle < 360):
 
-        speedX = int(100*radius * cos(angle * 3.141 / 180))
-        x_pointer += speedX/100
+            speedX = int(speedFactor*radius * cos(angle * 3.141 / 180))
+            x_pointer += speedX/speedFactor #divided is python only
 
-        speedY = int(100*radius * sin(angle * 3.141 / 180))
-        y_pointer += speedY/100
+            speedY = int(speedFactor*radius * sin(angle * 3.141 / 180))
+            y_pointer += speedY/speedFactor #divided is python only
 
-        print(speedX, "|", speedY)
+            angle+=1
 
-        angle+=1
+            pygame.time.delay(50)
 
-        pygame.time.delay(50)
-
-        WIN.set_at(( int(x_pointer) , int(y_pointer)), (255,0,0))
+            WIN.set_at(( int(x_pointer) , int(y_pointer)), (255,0,0))
 
         pygame.draw.rect(WIN, (200,200,200), pygame.Rect(0, WINDOW_HEIGHT-50, 300, 50))
-        WIN.blit(my_font.render("head at: " + str(int(x_pointer)) + ", "+str(int(y_pointer)) + "angle: " + str(angle), False, (0, 0, 0)), (5, WINDOW_HEIGHT-45))
-        WIN.blit(my_font.render("i: "+str(i)+" | speedA: " + str(("%.2f" % speedX)) + " | speedB: " + str(("%.2f" % speedY)), False, (0, 0, 0)), (5, WINDOW_HEIGHT-30))
+        WIN.blit(my_font.render("head at: " + str(int(x_pointer)) + ", "+str(int(y_pointer)) +" | "+ str(int(angle/3.6)) +"% ", False, (0, 0, 0)), (5, WINDOW_HEIGHT-45))
+        WIN.blit(my_font.render("speed:" + str(speedX) + "|"+ str(speedY), False, (0, 0, 0)), (5, WINDOW_HEIGHT-30))
         pygame.display.update()
 
 
