@@ -7,13 +7,15 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.lejos.ev3.ldt.LEJOS_EV3_LIBRARY_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/commons-cli.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/dbusjava.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/ev3classes.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/ev3tools.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jcommon.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jfreechart.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/jsch-0.1.50.jar"/>
-	<classpathentry kind="lib" path="/Users/bastianhesse/Desktop/leJOS_lib/opencv-2411.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli.jar"/>
+	<classpathentry kind="lib" path="lib/dbusjava.jar"/>
+	<classpathentry kind="lib" path="lib/ev3classes.jar"/>
+	<classpathentry kind="lib" path="lib/ev3tools.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart.jar"/>
+	<classpathentry kind="lib" path="lib/jsch-0.1.50.jar"/>
+	<classpathentry kind="lib" path="lib/opencv-2411.jar"/>
+
+
 	<classpathentry kind="output" path="bin"/>
 </classpath>
