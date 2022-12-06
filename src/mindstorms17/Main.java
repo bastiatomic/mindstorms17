@@ -14,7 +14,8 @@ import lejos.utility.Delay;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		//TODO: make cursive font in ONE connected line. each letter has a start and stop and some form of magic connection
+		// TODO: make cursive font in ONE connected line. each letter has a start and
+		// stop and some form of magic connection
 
 		// init all objects
 		Robot myRobot = new Robot("ascende_superios", new int[] { 0, 0 }, false,
@@ -27,11 +28,11 @@ public class Main {
 		LCD.clear();
 		LCD.drawString("Soo ...!", 0, 0);
 
-		//question: is 50x 1 degree the same as 1x 50 degree
+		// question: is 50x 1 degree the same as 1x 50 degree
 		for (int i = 0; i < 50; i++) {
 			myRobot.chainMotor.rotate(1);
 			LCD.clear();
-			LCD.drawString(i+"", 0, 0);
+			LCD.drawString(i + "", 0, 0);
 			Delay.msDelay(10);
 		}
 		Delay.msDelay(1000);
@@ -40,30 +41,31 @@ public class Main {
 		Delay.msDelay(5000);
 		int speedFactor = 100;
 		int radius = 1;
-		int speedX; int speedY;
+		int speedX;
+		int speedY;
 		double magicTranslator = 1.258045884996927; // wanna dig down the rabbit hole of that number?
 
 		for (int angle = 0; angle < 360; angle++) {
 
-			speedX  =(int) (speedFactor*radius * Math.cos(angle * 3.141 / 180));
-			myRobot.chainMotor.setSpeed(  speedX );
+			speedX = (int) (speedFactor * radius * Math.cos(angle * 3.141 / 180));
+			myRobot.chainMotor.setSpeed(speedX);
 
-			speedY = (int) ((speedFactor*radius * Math.sin(angle * 3.141 / 180)) * magicTranslator);
-			myRobot.wheelMotor.setSpeed( speedY );
+			speedY = (int) ((speedFactor * radius * Math.sin(angle * 3.141 / 180)) * magicTranslator);
+			myRobot.wheelMotor.setSpeed(speedY);
 
 			LCD.clear();
-			LCD.drawString(speedX+"|"+speedY, 0, 0);
+			LCD.drawString(speedX + "|" + speedY, 0, 0);
 
 			Delay.msDelay(10);
 		}
 
-
-		/* 
-		myRobot.move(20, -20); // positive integer drives to their sensor
-		myRobot.move(-20, -20);
-		myRobot.move(-20, 20);
-		myRobot.move(20, 20); // 15mm
-		//myRobot.driveToHome();*/
+		/*
+		 * myRobot.move(20, -20); // positive integer drives to their sensor
+		 * myRobot.move(-20, -20);
+		 * myRobot.move(-20, 20);
+		 * myRobot.move(20, 20); // 15mm
+		 * //myRobot.driveToHome();
+		 */
 
 		LCD.drawString("Returning", 0, 0);
 
@@ -74,8 +76,6 @@ public class Main {
 		LCD.drawString("Returning", 0, 0);
 
 	}
-
-	
 
 	public static void move(int distance, int mmSec, Port motorport) {
 
@@ -148,7 +148,6 @@ public class Main {
 		m.rotate(grad);
 		m.close();
 	}
-
 
 	private static void synchroExample() {
 		RegulatedMotor mA = new EV3LargeRegulatedMotor(MotorPort.A);
