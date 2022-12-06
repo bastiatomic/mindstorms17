@@ -24,9 +24,9 @@ public class Roboter {
     }
 
 
-    void move(int x, int y){
+    void move(int x, int y){ //distance in mm;
 
-        double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //cm distance of 1 degree
+        double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //mm distance of 1 degree
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36;
         
         double lengthA = x - this.current_pos[0];
@@ -36,9 +36,8 @@ public class Roboter {
 
         double rotationsNeededA = lengthA / distanceOneDegreeMotorChainMotor;
         double rotationsNeededB = lengthB / distanceOneDegreeMotorWheelMotor;
-
         
-        double speedA = 10; // magic number
+        double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;
         double speedB = rotationsNeededB / timeForLength;
 
@@ -60,7 +59,7 @@ public class Roboter {
         RegulatedMotor m = this.chainMotor;
 		float[] sample = new float[sensorMode.sampleSize()];
 		sensorMode.fetchSample(sample, 0);
-		m.setSpeed(20);
+		m.setSpeed(100);
 		while (sample[0] == 0) {
 			m.forward();
 			sensorMode.fetchSample(sample, 0);
@@ -76,8 +75,10 @@ public class Roboter {
         m.setSpeed(20);
 
         // get the current light intensity
+        this.wheelMotor.setSpeed(100);
         float initValue = 0;
         for (int i = 0; i < 10; i++) {
+        	ambientSensorMode.fetchSample(sample1, 0);
             initValue += sample1[0];
             Delay.msDelay(10);
         }
@@ -87,7 +88,7 @@ public class Roboter {
         while (initValue > thresHold) {
             ambientSensorMode.fetchSample(sample, 0);
             initValue = sample[0];
-            m.backward();
+            this.wheelMotor.backward();
             LCD.refresh();
             LCD.clear();
             LCD.drawString("Intensity: " + sample[0], 1, 1);

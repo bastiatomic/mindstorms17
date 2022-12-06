@@ -26,7 +26,10 @@ public class Main {
 		LCD.clear();
 		LCD.drawString("Soo ...!", 0, 0);
 
-		myRobot.move(10, 10);
+		myRobot.move(20, -20); // positive integer drives to their sensor
+		myRobot.move(-20, -20);
+		myRobot.move(-20, 20);
+		myRobot.move(20, 20); // 15mm
 		//myRobot.driveToHome();
 
 		LCD.drawString("Returning", 0, 0);
