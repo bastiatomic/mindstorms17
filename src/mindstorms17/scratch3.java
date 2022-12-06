@@ -27,6 +27,8 @@ public class scratch3 {
         System.out.println("");
         System.out.println("wheelMotor speed: " + (int) speedB);
         System.out.println("chainMotor rotations: " + (int) rotationsNeededB + " real value: " + rotationsNeededB);
+
+        System.out.println(rotationsNeededB / rotationsNeededA);
   
     }
     
