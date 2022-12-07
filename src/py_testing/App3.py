@@ -64,8 +64,7 @@ def move(x_pointer, y_pointer, fakeX, fakeY, angle1, rotationX, rotationY, radiu
 
     WIN.set_at((int(x_pointer), int(y_pointer)), (255, 0, 0))
 
-    pygame.draw.rect(WIN, (200, 200, 200), pygame.Rect(
-        0, WINDOW_HEIGHT-70, 300, 70))
+    pygame.draw.rect(WIN, (200, 200, 200), pygame.Rect(0, WINDOW_HEIGHT-70, 300, 70))
     WIN.blit(my_font.render("head at: " + str((x_pointer)) + ", "+str((y_pointer)), False, (0, 0, 0)), (5, WINDOW_HEIGHT-60))
     WIN.blit(my_font.render("speed:" + str(speedX) + "|" + str(speedY), False, (0, 0, 0)), (5, WINDOW_HEIGHT-45))
     WIN.blit(my_font.render("rem:" + str(removalX) + "|" + str(removalY), False, (0, 0, 0)), (5, WINDOW_HEIGHT-30))

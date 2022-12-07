@@ -1,7 +1,5 @@
 package mindstorms17;
 
-import javax.sound.sampled.SourceDataLine;
-
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;

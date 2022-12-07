@@ -4,8 +4,8 @@ public class scratch3 {
 
     public static void main(String[] args) {
 
-        double distanceX = 135.7168;
-        double distanceY = 121.0;
+        double distanceX = 100;
+        double distanceY = 100;
 
         double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; //mm distance of 1 degree
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; //TODO: abstract into classes
