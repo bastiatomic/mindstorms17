@@ -60,6 +60,23 @@ public class Main {
 
 			Delay.msDelay(10);
 		}
+
+		Delay.msDelay(5000);
+
+		//Testing: how accurate am I?
+		myRobot.moveCm(1, 1);
+
+		Delay.msDelay(5000);
+
+		//Testing: No real/Threshold DistanceService
+		myRobot.moveCm(10, 10);
+		myRobot.moveCm(10, -10);
+		myRobot.moveCm(-2, 0);
+		myRobot.moveCm(-8, -8);
+		myRobot.moveCm(-10, -10);
+		myRobot.moveCm(2, 0);
+		
+
 		myRobot.chainMotor.stop(); myRobot.wheelMotor.stop();
 
 		

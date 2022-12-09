@@ -47,14 +47,14 @@ def move(x_pointer, y_pointer, fakeX, fakeY, angle1, rotationX, rotationY, radiu
     speedX = radius1 * cos(angle1 * 3.141 / 180)
 
     fakeX += speedX
-    removalX = int(fakeX)
+    removalX = int(fakeX) # lejos and stuff
     fakeX -= removalX
     x_pointer += (removalX * rotationX)
 
     speedY = radius1 * sin(angle1 * 3.141 / 180)
 
     fakeY += speedY
-    removalY = int(fakeY)
+    removalY = int(fakeY) # lejos and stuff requires this
     fakeY -= removalY
     y_pointer += (removalY * rotationY)
 
@@ -90,12 +90,6 @@ while looping:
             x = (x_pointer, y_pointer, fakeX, fakeY)
 
             for i in range(180):
-                x = move(x[0], x[1], x[2], x[3], i, 1.5, 1, 1)
-
-            for i in range(180):
-                x = move(x[0], x[1], x[2], x[3], i, 1.5, 1, 1)
-
-            for i in range(180,360):
                 x = move(x[0], x[1], x[2], x[3], i, 1.5, 1, 1)
 
             for i in range(180,360):

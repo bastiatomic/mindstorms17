@@ -19,10 +19,6 @@ package mindstorms17;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
         import lejos.hardware.port.MotorPort;
-        import lejos.hardware.port.Port;
-        import lejos.hardware.port.SensorPort;
-        import lejos.hardware.sensor.EV3TouchSensor;
-        import lejos.hardware.sensor.SensorMode;
         import lejos.robotics.RegulatedMotor;
 
 public class Gear {

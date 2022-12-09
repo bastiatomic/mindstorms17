@@ -107,4 +107,21 @@ public class Robot {
         // sensor.close();
     }
 
+    void moveCm(int x, int y){
+
+        x = x * 9; // 8.925619834710744
+        y = y * 8; // 7.957747309102483
+
+        this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
+        this.chainMotor.startSynchronization();
+        this.chainMotor.setSpeed((int) 100); //TODO: how does speed affect the outcome. what is speed?
+        this.wheelMotor.setSpeed((int) 100);
+        this.chainMotor.rotate((int) x); // WARNING: conversion to int
+        this.wheelMotor.rotate((int) y);
+        // Delay.msDelay( (long) timeForLength*1000);
+        this.chainMotor.endSynchronization();
+        this.chainMotor.waitComplete();
+        this.wheelMotor.waitComplete();
+    }
+
 }
