@@ -50,7 +50,7 @@ public class Main {
 		for (int angle = 1; angle <= 360; angle++) {
 
 			speedX += (int) (speedFactor * radius * Math.cos(angle * 3.141 / 180)); //speedX is a distance, not speed
-			myRobot.chainMotor.setSpeed(speedX); //what about negative integer?
+			myRobot.chainMotor.setSpeed(speedX); //what about negative integer? speed should be cos/sin * speedFactor
 
 			speedY += (int) ((speedFactor * radius * Math.sin(angle * 3.141 / 180)) * magicTranslator);
 			myRobot.wheelMotor.setSpeed(speedY);
