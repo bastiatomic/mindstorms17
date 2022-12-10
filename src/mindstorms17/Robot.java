@@ -9,17 +9,18 @@ import lejos.utility.Delay;
 
 public class Robot {
     String name;
-    int[] current_pos;
+    int realPosX; int realPosY; double exactPosX; double exactPosY;
     boolean head_position;
     RegulatedMotor chainMotor;
     RegulatedMotor wheelMotor;
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
 
-    Robot(String a, int[] b, boolean c,
+    Robot(String a, boolean c,
             RegulatedMotor d, RegulatedMotor e, EV3TouchSensor f, EV3ColorSensor g) {
         this.name = a;
-        this.current_pos = b;
+        this.exactPosX = 0;this.exactPosY = 0;
+        this.realPosX = 0; this.realPosY = 0;
         this.head_position = c;
         this.chainMotor = d;
         this.wheelMotor = e;
@@ -32,8 +33,8 @@ public class Robot {
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; // TODO: abstract into classes
         double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; // mm distance of 1 degree
 
-        double lengthA = x - this.current_pos[0];
-        double lengthB = y - this.current_pos[1];
+        double lengthA = x - this.exactPosX;
+        double lengthB = y - this.exactPosY;
 
         // double finalLength = Math.sqrt(Math.pow(lengthA, 2) + Math.pow(lengthB, 2));
         // // C

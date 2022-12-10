@@ -11,7 +11,8 @@ import javax.imageio.ImageIO;
 What do we see here?
 - remove unecessary pixels
 - the head will search the first pixel, then drive in a 90 or 45 degree move to the next. if they are connected (around), 
-the head will not go up, if it wont find an adjacent pixel, the head will go up and continue its search
+the head will not go up, if it wont find an adjacent pixel, the head will go up and continue its search to the next
+psoition in the list. it will always follow the locations_list and move the head adaptingly.
 */
 
 public class a {

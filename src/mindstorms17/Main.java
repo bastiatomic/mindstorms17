@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 
 		// init all objects
-		Robot myRobot = new Robot("ascende_superios", new int[] { 0, 0 }, false,
+		Robot myRobot = new Robot("ascende_superios", false,
 				new EV3LargeRegulatedMotor(MotorPort.A), // chainMotor
 				new EV3LargeRegulatedMotor(MotorPort.B), // wheelMotor
 				new EV3TouchSensor(SensorPort.S1), // touchSensor
