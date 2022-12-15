@@ -37,20 +37,27 @@ public class a {
                 if(img.getRGB(x,y) == BLACK){
                     try{
 
-                        if(img.getRGB(x-1, y) == BLACK){
+                        if(img.getRGB(x-1, y-1) == BLACK){
                             img.setRGB(x-1, y, WHITE);
-                        }
-                        if(img.getRGB(x, y-1) == BLACK){
                             img.setRGB(x, y-1, WHITE);
                         }
-                        if(img.getRGB(x+1, y) == BLACK){
+                        if(img.getRGB(x+1, y+1) == BLACK){
                             img.setRGB(x+1, y, WHITE);
-                        }
-                        if(img.getRGB(x, y+1) == BLACK){
                             img.setRGB(x, y+1, WHITE);
                         }
-   
-                    } catch (IndexOutOfBoundsException e) {}
+                        if(img.getRGB(x+1, y-1) == BLACK){
+                            img.setRGB(x+1, y, WHITE);
+                            img.setRGB(x, y-1, WHITE);
+                        }
+                        if(img.getRGB(x-1, y+1) == BLACK){
+                            img.setRGB(x-1, y, WHITE);
+                            img.setRGB(x, y+1, WHITE);
+                        }
+
+                    } catch (IndexOutOfBoundsException e){}
+
+
+
                 }
 
             }     
@@ -83,6 +90,7 @@ public class a {
         print(locations);
 
     }
+    
     static void print(ArrayList<int[]> a){
         for (int i = 0; i < a.size(); i++) {
             System.out.println(a.get(i)[0] +" | " + a.get(i)[1]);

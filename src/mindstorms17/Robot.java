@@ -1,5 +1,7 @@
 package mindstorms17;
 
+import java.util.ArrayList;
+
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
@@ -46,10 +48,9 @@ public class Robot {
         double timeForLength = rotationsNeededA / speedA;
         double speedB = rotationsNeededB / timeForLength;
 
-        /*
-         * What happens here: move both motors at each speed for 'timeForLength' seconds
-         * synchronized
-         */
+        /*  What happens here: move both motors at each speed for 'timeForLength' seconds
+            synchronized */
+
         this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
         this.chainMotor.startSynchronization();
         this.chainMotor.setSpeed((int) speedA);
@@ -123,6 +124,18 @@ public class Robot {
         this.chainMotor.endSynchronization();
         this.chainMotor.waitComplete();
         this.wheelMotor.waitComplete();
+    }
+
+    void printIntArray(ArrayList<int[]> a){
+        
+        for (int i = 0; i < a.size()-1; i++) {
+
+            move(
+                a.get(i+1)[0]-a.get(i)[0]   , 
+                a.get(i+1)[1]-a.get(i)[1]   );
+
+        }
+
     }
 
 }

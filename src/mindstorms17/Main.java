@@ -45,8 +45,9 @@ public class Main {
 		double magicTranslator = 1.121626446280992; // wanna dig down the rabbit hole of that number?
 
 		//Testing: should draw a perfect circle
-		myRobot.chainMotor.forward();
-		myRobot.wheelMotor.forward();
+
+		myRobot.chainMotor.setSpeed(10); myRobot.chainMotor.forward();
+		myRobot.wheelMotor.setSpeed(10); myRobot.wheelMotor.forward();
 		for (int angle = 1; angle <= 360; angle++) {
 
 			speedX += (int) (speedFactor * radius * Math.cos(angle * 3.141 / 180)); //speedX is a distance, not speed
