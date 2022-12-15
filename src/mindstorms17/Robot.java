@@ -21,7 +21,7 @@ public class Robot {
     Robot(String a, boolean c,
             RegulatedMotor d, RegulatedMotor e, EV3TouchSensor f, EV3ColorSensor g) {
         this.name = a;
-        this.exactPosX = 0;this.exactPosY = 0;
+        this.exactPosX = 0; this.exactPosY = 0;
         this.realPosX = 0; this.realPosY = 0;
         this.head_position = c;
         this.chainMotor = d;
@@ -35,14 +35,20 @@ public class Robot {
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; // TODO: abstract into classes
         double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; // mm distance of 1 degree
 
-        double lengthA = x - this.exactPosX;
-        double lengthB = y - this.exactPosY;
+        double lengthA = x;
+        double lengthB = y;
 
         // double finalLength = Math.sqrt(Math.pow(lengthA, 2) + Math.pow(lengthB, 2));
         // // C
 
         double rotationsNeededA = lengthA / distanceOneDegreeMotorChainMotor;
         double rotationsNeededB = lengthB / distanceOneDegreeMotorWheelMotor;
+        
+        this.exactPosX += rotationsNeededA;
+        this.exactPosY += rotationsNeededB;
+        
+        this.realPosX += (int) rotationsNeededA;
+        this.realPosX += (int) rotationsNeededB;
 
         double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;

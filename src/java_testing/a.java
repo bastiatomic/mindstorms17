@@ -20,7 +20,7 @@ public class a {
     static int BLACK = new Color(20,20,20).getRGB();
     public static void main(String[] args) throws IOException {
         
-        final String fileName = "hzd_kappa_CANNY";
+        final String fileName = "hzd_kappa_CANNY_COMPRESSED";
         final String fileType = "png";
 
         BufferedImage img = ImageIO.read(new File("graphics/"+fileName+"."+fileType));
@@ -82,7 +82,16 @@ public class a {
             for (int x = 0; x < WIDTH; x++) {
 
                 if(img.getRGB(x,y) == BLACK){
-                    locations.add(new int[]{x,y});
+                    
+                    if (locations.size()>0){
+                        int a = locations.get(locations.size()-1)[0];
+                        int b = locations.get(locations.size()-1)[1];
+                        locations.add(new int[]{x-a,y-b});
+                    } else {
+                        locations.add(new int[]{x,y});
+                    }
+
+                    
                 }
             }
         }
@@ -92,9 +101,8 @@ public class a {
     }
     
     static void print(ArrayList<int[]> a){
-        for (int i = 0; i < a.size(); i++) {
-            System.out.println(a.get(i)[0] +" | " + a.get(i)[1]);
-            
+        for (int i = 0; i < a.size()-1; i++) {
+            System.out.println(a.get(i)[0]+", " + a.get(i)[1]);
         }
     }
 }
