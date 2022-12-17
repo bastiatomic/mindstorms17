@@ -15,7 +15,7 @@ public class b {
     public static void main(String[] args) throws IOException {
         
         final String fileName = "mock";
-        final String fileType = "jpg";
+        final String fileType = "png"; //PNG is the final file tyoe, JPG has illegal compression
 
         BufferedImage img = ImageIO.read(new File("graphics/"+fileName+"."+fileType));
         final int WIDTH = img.getWidth();
@@ -31,7 +31,6 @@ public class b {
             for (int x = 0; x < WIDTH; x++) {
 
                 if(img.getRGB(x,y) == BLACK){
-                    img.setRGB(x,y, WHITE); // remove a pixel we already know
 
                     locations.add(new int[]{x,y}); // new "start" node starts here
 
@@ -43,6 +42,7 @@ public class b {
                         if(img.getRGB(x+looper[i],y+looper[i+1]) == BLACK){
                             extender[0] = looper[i];
                             extender[1] = looper[i+1];
+                            //System.out.println(extender[0] + " " + extender[1]);
                             break;
                         }
                     }
@@ -54,6 +54,7 @@ public class b {
                         img.setRGB(startX, startY, WHITE); // delete the pixel from memory
                         startX += extender[0]; startY += extender[1];
                         debugger++;
+                        //System.out.println("debugger: " + debugger);
                     }
                     //if there are no more pixels on this 'line'
                     locations.add(new int[]{startX -= extender[0], startY -= extender[1]});
@@ -64,7 +65,8 @@ public class b {
         write_file(img, fileName);
 
         for (int i = 0; i < locations.size()-1; i++) {
-            System.out.println(locations.get(i)[0] + " | "+ locations.get(i)[1]);
+           //System.out.println(locations.get(i)[0] + " | "+ locations.get(i)[1]);
+           System.out.println("locations.add(new int[]{"+locations.get(i)[0]+", "+ locations.get(i)[1]+"})");
             
         }
         
