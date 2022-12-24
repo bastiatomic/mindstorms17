@@ -31,6 +31,7 @@ public class Robot {
     }
 
     void move(int x, int y) { // distance in mm;
+        //WHATIS: I move the motors in two directions simultanesouly without respecting the offset it will generate
 
         double distanceOneDegreeMotorChainMotor = (121.0 / 360) * 12 / 36; // TODO: abstract into classes
         double distanceOneDegreeMotorWheelMotor = (135.7168 / 360) * 12 / 36; // mm distance of 1 degree
@@ -74,6 +75,7 @@ public class Robot {
         // the lightSensor
         SensorMode sensorMode = this.touchSensor.getTouchMode();
         RegulatedMotor m = this.chainMotor;
+        m.setSpeed(20);
         float[] sample = new float[sensorMode.sampleSize()];
         sensorMode.fetchSample(sample, 0);
         m.setSpeed(100);
@@ -84,32 +86,16 @@ public class Robot {
         m.stop();
 
         Delay.msDelay(2000);
-        this.colorSensor.setFloodlight(false);
-        LCD.drawString("Init", 2, 2);
-        LCD.setAutoRefresh(false);
-        SensorMode ambientSensorMode = this.colorSensor.getAmbientMode();
+        this.wheelMotor.setSpeed(50);
+        SensorMode ambientSensorMode = this.colorSensor.getRedMode();
         float[] sample1 = new float[ambientSensorMode.sampleSize()];
-        m.setSpeed(20);
-
-        // get the current light intensity
-        this.wheelMotor.setSpeed(100);
-        float initValue = 0;
-        for (int i = 0; i < 10; i++) {
+        while (sample1[0] < 0.20) {
             ambientSensorMode.fetchSample(sample1, 0);
-            initValue += sample1[0];
-            Delay.msDelay(10);
-        }
-        initValue = initValue / 10;
-        float thresHold = (float) (initValue - 0.04); // -0.04 is a magic number
-
-        while (initValue > thresHold) {
-            ambientSensorMode.fetchSample(sample, 0);
-            initValue = sample[0];
             this.wheelMotor.backward();
             LCD.refresh();
             LCD.clear();
-            LCD.drawString("Intensity: " + sample[0], 1, 1);
-            Delay.msDelay(1000);
+            LCD.drawString("Intensity: " + sample1[0], 1, 1);
+            Delay.msDelay(100);
         }
         // TODO: technical difference between Thread.sleep and Delay.msDelay
         // sensor.close();
