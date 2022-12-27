@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
 
-public class b {
-    //make a lineBuilder
+public class LocationsListCreator {
+    //i'm the linefollower module
 
     static int WHITE = new Color(255,255,255).getRGB();
     static int BLACK = new Color(20,20,20).getRGB();
@@ -66,9 +66,9 @@ public class b {
 
         for (int i = 0; i < locations.size()-1; i++) {
            //System.out.println(locations.get(i)[0] + " | "+ locations.get(i)[1]);
-           System.out.println("locations.add(new int[]{"+locations.get(i)[0]+", "+ locations.get(i)[1]+"})");
-            
+           System.out.println("locations.add(new int[]{"+locations.get(i)[0]+", "+ locations.get(i)[1]+"});");   
         }
+        System.out.println("// ADD ME TO MAIN.JAVA");
         
     }
     static void write_file(BufferedImage x, String name) throws IOException{

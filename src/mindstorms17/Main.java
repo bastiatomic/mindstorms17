@@ -18,54 +18,71 @@ public class Main {
 		Robot myRobot = new Robot("ascende_superios", false,
 				new EV3LargeRegulatedMotor(MotorPort.A), // chainMotor
 				new EV3LargeRegulatedMotor(MotorPort.B), // wheelMotor
+				new EV3LargeRegulatedMotor(MotorPort.C), // headMotor
 				new EV3TouchSensor(SensorPort.S1), // touchSensor
 				new EV3ColorSensor(SensorPort.S2)); // colorSensor
 
-		Delay.msDelay(1000); // generates FPS's amount of calls
+		Delay.msDelay(10);
 		LCD.clear();
 		LCD.drawString("Soo ...!", 0, 0);
 		
 		ArrayList<int[]> locations = new ArrayList<>();;
 	
+		myRobot.driveToHome(); // both speeds are very good //positive integer drive towards sensor
+
+		//TODO: the head is down at start;
+		myRobot.headUp();
 		
+		//TODO test me, i'm looking alright
+		locations.add(new int[]{1, 1});
+		locations.add(new int[]{8, 1});
+		locations.add(new int[]{14, 9});
+		locations.add(new int[]{20, 9});
+		locations.add(new int[]{20, 10});
+		locations.add(new int[]{20, 10}); 
+		locations.add(new int[]{30, 14});
+		locations.add(new int[]{36, 20});
+		locations.add(new int[]{36, 21});
+		locations.add(new int[]{36, 21});
+		locations.add(new int[]{16, 26});
+		locations.add(new int[]{17, 27});
+		locations.add(new int[]{15, 27});
+		locations.add(new int[]{16, 27});
+		locations.add(new int[]{16, 28});
+		locations.add(new int[]{16, 28});
+		locations.add(new int[]{30, 28});
+		locations.add(new int[]{30, 30});
+		locations.add(new int[]{29, 31});
+		locations.add(new int[]{27, 33});
+		locations.add(new int[]{31, 31});
+		locations.add(new int[]{33, 33});
+		locations.add(new int[]{15, 32});
+		locations.add(new int[]{16, 33});
+		locations.add(new int[]{14, 33});
+		locations.add(new int[]{15, 34});
+		locations.add(new int[]{25, 33});
+		locations.add(new int[]{26, 33});
+		locations.add(new int[]{30, 33});
+		locations.add(new int[]{32, 33});
+		locations.add(new int[]{34, 33});
+		locations.add(new int[]{35, 33});
+		locations.add(new int[]{28, 34});
+		locations.add(new int[]{30, 36});
+		locations.add(new int[]{32, 34});
+		locations.add(new int[]{31, 35});
+		locations.add(new int[]{30, 37});
+		// ADD ME TO MAIN.JAVA
 		
-		myRobot.driveToHome(); // both speeds are very good
-		
-		myRobot.move(-150,0); // the final canvas size is 150x250 distance in mm
-		Delay.msDelay(1000);
-		myRobot.move(1,-200);
-		Delay.msDelay(1000);
-		myRobot.move(150,0); // the final canvas size is 150x250
-		Delay.msDelay(1000);
-		myRobot.move(1,200);
-		
+		//I'm using the line follower data
 		for (int i = 0; i< locations.size()-1; i++) {
-			myRobot.move(locations.get(i)[0], locations.get(i)[1]);
 			LCD.clear();
 			LCD.drawString("["+i+"] ("+locations.get(i)[0] +","+ locations.get(i)[1]+")", 0, 0);
+			myRobot.move(locations.get(i)[0], locations.get(i)[1]);
+			myRobot.headSwitch();
+			Delay.msDelay(50);
 		}
-
-		/*
-		myRobot.moveCm(10, 10);
-		myRobot.moveCm(10, -10);
-		myRobot.moveCm(-2, 0);
-		myRobot.moveCm(-8, -8);
-		myRobot.moveCm(-10, -10);
-		myRobot.moveCm(10, 0);*/
 		
-
 		myRobot.chainMotor.stop(); myRobot.wheelMotor.stop();
-
-		
-		//------------------
-
-		/*
-		 * myRobot.move(20, -20); // positive integer drives to their sensor
-		 * myRobot.move(-20, -20);
-		 * myRobot.move(-20, 20);
-		 * myRobot.move(20, 20); // 15mm
-		 * //myRobot.driveToHome();
-		 */
 
 	}
 

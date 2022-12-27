@@ -11,15 +11,16 @@ import lejos.utility.Delay;
 
 public class Robot {
     String name;
-    int realPosX; int realPosY; double exactPosX; double exactPosY;
+    int realPosX; int realPosY; double exactPosX; double exactPosY; double thresholdX; double thresholdY;
     boolean head_position;
     RegulatedMotor chainMotor;
     RegulatedMotor wheelMotor;
+    RegulatedMotor headMotor;
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
 
     Robot(String a, boolean c,
-            RegulatedMotor d, RegulatedMotor e, EV3TouchSensor f, EV3ColorSensor g) {
+            RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
         this.name = a;
         this.exactPosX = 0; this.exactPosY = 0;
         this.realPosX = 0; this.realPosY = 0;
@@ -27,7 +28,18 @@ public class Robot {
         this.chainMotor = d;
         this.wheelMotor = e;
         this.touchSensor = f;
-        this.colorSensor = g;
+        this.colorSensor = g; this.headMotor = z;
+        this.thresholdX = 0; this.thresholdY = 0;
+    }
+
+    void headUp(){
+        headMotor.rotate(1);
+        Delay.msDelay(10);
+    }
+
+    void headSwitch(){
+        headMotor.rotate(1);
+        Delay.msDelay(10);
     }
 
     void move(int x, int y) { // distance in mm;
@@ -44,16 +56,23 @@ public class Robot {
 
         double rotationsNeededA = lengthA / distanceOneDegreeMotorChainMotor;
         double rotationsNeededB = lengthB / distanceOneDegreeMotorWheelMotor;
+
+        //threshold start
+        this.thresholdX += (rotationsNeededA - (int) rotationsNeededA);
+        this.thresholdY += (rotationsNeededB - (int) rotationsNeededB);
+
+        //adding threshold (zero or one)
+        rotationsNeededA += (int) thresholdX;
+        rotationsNeededB += (int) thresholdY;
+
+        //removing excesshreshold (1+)
+        thresholdX -= (int) thresholdX;
+        thresholdY -= (int) thresholdY;
         
-        this.exactPosX += rotationsNeededA;
-        this.exactPosY += rotationsNeededB;
-        
-        this.realPosX += (int) rotationsNeededA;
-        this.realPosX += (int) rotationsNeededB;
 
         double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;
-        double speedB = rotationsNeededB / timeForLength;
+        double speedB = rotationsNeededB / timeForLength; //TODO: this should create the same speed, maybe magic numbe #2?
 
         /*  What happens here: move both motors at each speed for 'timeForLength' seconds
             synchronized */
