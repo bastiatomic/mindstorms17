@@ -1,4 +1,4 @@
-package mindstorms17;
+package java_testing;
 
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
@@ -6,6 +6,7 @@ import lejos.utility.Delay;
 public class scratch2 {
 
     public static void main(String[] args) {
+        //TODO: Purge this file
 
         moveHeadToPositionByTime(0, 0, 10, 10, 10);
 

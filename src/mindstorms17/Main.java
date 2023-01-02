@@ -2,6 +2,7 @@ package mindstorms17;
 
 import java.util.ArrayList;
 
+import java_testing.Position;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -9,82 +10,109 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.utility.Delay;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.awt.Color;
+import javax.imageio.ImageIO;
 
 public class Main {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 
+		ArrayList<Position> locations = new ArrayList<>();
+		// SOA applied here
+		// ATTENTION: the head is down at start;
+
+		//BufferedImage img_CANNY = ImageIO.read(new File("src/mindstorms17/2070_tycoon_logo_CANNY.png"));
+    
+		//LineFollower3 img = new LineFollower3(img_CANNY);
+
+		/*img.getLocationList();
+		System.out.println(img.locations.size());
+
+		PrintWriter f0 = new PrintWriter(new FileWriter("output.txt"));
+
+		//fix stuff
+		for(Position a: img.locations)
+		{
+			f0.println("locations.add(new Position("+ a.x + ", " + a.y + ", " + a.headSwitch+ "));");
+			
+		}
+		f0.close();
+		System.out.println(img.locations.size());
+		System.exit(0); */
+
+		locations = locationsRawList.addElements();
+		
 		// init all objects
-		Robot myRobot = new Robot("ascende_superios", false,
+		Robot myRobot = new Robot(0,0,"UP",
 				new EV3LargeRegulatedMotor(MotorPort.A), // chainMotor
 				new EV3LargeRegulatedMotor(MotorPort.B), // wheelMotor
 				new EV3LargeRegulatedMotor(MotorPort.C), // headMotor
 				new EV3TouchSensor(SensorPort.S1), // touchSensor
 				new EV3ColorSensor(SensorPort.S2)); // colorSensor
 
-		Delay.msDelay(10);
 		LCD.clear();
 		LCD.drawString("Soo ...!", 0, 0);
+
 		
-		ArrayList<int[]> locations = new ArrayList<>();;
-	
+		boolean isUp = false;
+
+		/*
+		 * imageService is not a 'part' of Robot.java SOA
+		 * imageService.load("file");
+		 * imageService.scale();
+		 * imageService.monoColor();
+		 * imageService.travelerService();
+		 * myRobot.locations = imageService.locations;
+		 */
+
+		myRobot.headSwitch(); // headUp expected
+
 		myRobot.driveToHome(); // both speeds are very good //positive integer drive towards sensor
 
-		//TODO: the head is down at start;
-		myRobot.headUp();
+		// TODO test me, i'm looking alright
+		// TRUE = move head down
 		
-		//TODO test me, i'm looking alright
-		locations.add(new int[]{1, 1});
-		locations.add(new int[]{8, 1});
-		locations.add(new int[]{14, 9});
-		locations.add(new int[]{20, 9});
-		locations.add(new int[]{20, 10});
-		locations.add(new int[]{20, 10}); 
-		locations.add(new int[]{30, 14});
-		locations.add(new int[]{36, 20});
-		locations.add(new int[]{36, 21});
-		locations.add(new int[]{36, 21});
-		locations.add(new int[]{16, 26});
-		locations.add(new int[]{17, 27});
-		locations.add(new int[]{15, 27});
-		locations.add(new int[]{16, 27});
-		locations.add(new int[]{16, 28});
-		locations.add(new int[]{16, 28});
-		locations.add(new int[]{30, 28});
-		locations.add(new int[]{30, 30});
-		locations.add(new int[]{29, 31});
-		locations.add(new int[]{27, 33});
-		locations.add(new int[]{31, 31});
-		locations.add(new int[]{33, 33});
-		locations.add(new int[]{15, 32});
-		locations.add(new int[]{16, 33});
-		locations.add(new int[]{14, 33});
-		locations.add(new int[]{15, 34});
-		locations.add(new int[]{25, 33});
-		locations.add(new int[]{26, 33});
-		locations.add(new int[]{30, 33});
-		locations.add(new int[]{32, 33});
-		locations.add(new int[]{34, 33});
-		locations.add(new int[]{35, 33});
-		locations.add(new int[]{28, 34});
-		locations.add(new int[]{30, 36});
-		locations.add(new int[]{32, 34});
-		locations.add(new int[]{31, 35});
-		locations.add(new int[]{30, 37});
-		// ADD ME TO MAIN.JAVA
-		
-		//I'm using the line follower data
-		for (int i = 0; i< locations.size()-1; i++) {
+
+		// I'm using the TravelerService data and i expect clean data
+		for (int i = 0; i < locations.size(); i++) {
 			LCD.clear();
-			LCD.drawString("["+i+"] ("+locations.get(i)[0] +","+ locations.get(i)[1]+")", 0, 0);
-			myRobot.move(locations.get(i)[0], locations.get(i)[1]);
-			myRobot.headSwitch();
-			Delay.msDelay(50);
+			LCD.drawString("[" + i + "/" + locations.size() + "]", 0, 1);
+			LCD.drawString("Take a hike,", 0, 6);
+			LCD.drawString("be curious", 1, 7);
+
+			if(i == 100){break;}
+
+			myRobot.moveToPos(locations.get(i).x, locations.get(i).y);
+
+			if (locations.get(i).headSwitch) {
+				myRobot.headSwitch();
+				isUp = !isUp;
+			}
+
+			Delay.msDelay(10);
 		}
+		if (isUp) {
+			myRobot.headSwitch();
+		}
+
+		// reset me:
+		LCD.clear();
+		LCD.drawString("RESET ...", 0, 0);
+		myRobot.move(0, 250);
 		
-		myRobot.chainMotor.stop(); myRobot.wheelMotor.stop();
+		
+		myRobot.headSwitch();
+		
 
+		myRobot.chainMotor.stop();
+		myRobot.wheelMotor.stop();
+		myRobot.headMotor.stop();
 	}
-
 
 }

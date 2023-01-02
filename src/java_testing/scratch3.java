@@ -1,8 +1,9 @@
-package mindstorms17;
+package java_testing;
 
 public class scratch3 {
 
     public static void main(String[] args) {
+        //TODO: Purge this file
 
         double distanceX = 100;
         double distanceY = 100;

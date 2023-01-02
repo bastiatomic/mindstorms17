@@ -1,108 +1,67 @@
 package java_testing;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.Color;
-import javax.imageio.ImageIO;
-
-/*@author Bastian Hesse
-What do we see here?
-- remove unecessary pixels
-- the head will search the first pixel, then drive in a 90 or 45 degree move to the next. if they are connected (around), 
-the head will not go up, if it wont find an adjacent pixel, the head will go up and continue its search to the next
-psoition in the list. it will always follow the locations_list and move the head adaptingly.
-*/
 
 public class a {
-    static int WHITE = new Color(255,255,255).getRGB();
-    static int BLACK = new Color(20,20,20).getRGB();
-    public static void main(String[] args) throws IOException {
-        
-        final String fileName = "hzd_kappa_CANNY_COMPRESSED";
-        final String fileType = "png";
 
-        BufferedImage img = ImageIO.read(new File("graphics/"+fileName+"."+fileType));
-        final int WIDTH = img.getWidth();
-        final int HEIGHT = img.getHeight();
+    public static double thresholdX = 0; public static double thresholdY = 0;
 
+    public static void main(String[] args) throws InterruptedException{
 
-
-        //img.getRGB(pointer[0], pointer[1])
-
-        for (int y = 0; y <HEIGHT; y++) {
-            for (int x = 0; x < WIDTH; x++) {
-
-                if(img.getRGB(x,y) == BLACK){
-                    try{
-
-                        if(img.getRGB(x-1, y-1) == BLACK){
-                            img.setRGB(x-1, y, WHITE);
-                            img.setRGB(x, y-1, WHITE);
-                        }
-                        if(img.getRGB(x+1, y+1) == BLACK){
-                            img.setRGB(x+1, y, WHITE);
-                            img.setRGB(x, y+1, WHITE);
-                        }
-                        if(img.getRGB(x+1, y-1) == BLACK){
-                            img.setRGB(x+1, y, WHITE);
-                            img.setRGB(x, y-1, WHITE);
-                        }
-                        if(img.getRGB(x-1, y+1) == BLACK){
-                            img.setRGB(x-1, y, WHITE);
-                            img.setRGB(x, y+1, WHITE);
-                        }
-
-                    } catch (IndexOutOfBoundsException e){}
-
-
-
-                }
-
-            }     
-        }
-
-        write_file(img, fileName);
-
-        generateCoordList(img);
-
-    }
-    static void write_file(BufferedImage x, String name) throws IOException{
-        File outputfile2 = new File("graphics/"+name+"_COMPRESSED.png");
-        ImageIO.write(x, "png", outputfile2);
-
-    }
-    static void generateCoordList(BufferedImage img){
         ArrayList<int[]> locations = new ArrayList<>();
-        int HEIGHT = img.getHeight();
-        int WIDTH = img.getHeight();
 
-        for (int y = 0; y <HEIGHT; y++) {
-            for (int x = 0; x < WIDTH; x++) {
+        locations.add(new int[]{-15, -15});
+        locations.add(new int[]{-15, 0});
+        locations.add(new int[]{18, -3});
+        locations.add(new int[]{0, -9});
+        locations.add(new int[]{-21, 9});
+        locations.add(new int[]{0, -9});
+        locations.add(new int[]{-51, 0});
+        locations.add(new int[]{-12, 0});
+        locations.add(new int[]{81, -3});
 
-                if(img.getRGB(x,y) == BLACK){
-                    
-                    if (locations.size()>0){
-                        int a = locations.get(locations.size()-1)[0];
-                        int b = locations.get(locations.size()-1)[1];
-                        locations.add(new int[]{x-a,y-b});
-                    } else {
-                        locations.add(new int[]{x,y});
-                    }
 
-                    
-                }
-            }
+        for (int i = 0; i < locations.size(); i++) {
+            
+            move(locations.get(i)[0],locations.get(i)[1]);
         }
 
-        print(locations);
+  
+    }
 
+    static void move(int x, int y) throws InterruptedException { // distance in mm;
+        // WHATIS: I move the motors in two directions simultanesouly while respecting
+        // the offset it will generate
+
+        double rotationsNeededA = x / mindstorms17.Gear.chainGear();
+        double rotationsNeededB = y / mindstorms17.Gear.wheelGear();
+
+        System.out.println(rotationsNeededA +"="+x + "/" + mindstorms17.Gear.chainGear());
+        System.out.println(rotationsNeededB +"="+y + "/" + mindstorms17.Gear.wheelGear());
+
+        // threshold start
+        thresholdX += (rotationsNeededA - (int) rotationsNeededA);
+        thresholdY += (rotationsNeededB - (int) rotationsNeededB);
+
+        // adding threshold (zero or one)
+        /*
+        rotationsNeededA += (int) thresholdX;
+        rotationsNeededB += (int) thresholdY;
+
+        // removing excesshreshold (1+)
+        thresholdX -= (int) thresholdX;
+        thresholdY -= (int) thresholdY;*/
+
+        double speedA = 100; // magic number
+        double timeForLength = rotationsNeededA / speedA;
+        double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
+
+        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0   
+        System.out.println("TFL = " + timeForLength + "; rotA: " + rotationsNeededA + " /  speedA: " + speedA);     
+        System.out.println((int)speedB +"="+(int)rotationsNeededB + " / " + (int)timeForLength);
+        System.out.println("---------------------");
+        //System.out.println( timeForLength + " - "+ (int)speedA + " " + (int)speedB);
+        Thread.sleep(10);
     }
     
-    static void print(ArrayList<int[]> a){
-        for (int i = 0; i < a.size()-1; i++) {
-            System.out.println(a.get(i)[0]+", " + a.get(i)[1]);
-        }
-    }
 }
