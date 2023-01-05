@@ -17,10 +17,10 @@ public class LineFollower2 {
     
 
     public static void main(String[] args) throws IOException {
-        final String fileName = "2070_tycoon_logo_CANNY";
+        final String fileName = "apple_logo";
         final String fileType = "png"; // PNG is the final file type, JPG has illegal compression
 
-        BufferedImage img = ImageIO.read(new File("graphics/" + fileName + "." + fileType));
+        BufferedImage img = ImageIO.read(new File("src/graphics/" + fileName + "." + fileType));
         final int WIDTH = img.getWidth();
         final int HEIGHT = img.getHeight();
 
@@ -105,7 +105,7 @@ public class LineFollower2 {
             
         }
      
-        printPositionArray(locationsMerged);
+        //printPositionArray(locationsMerged);
         printPositionArray2(locationsVector);
         write_file(img, fileName);
 
@@ -114,8 +114,9 @@ public class LineFollower2 {
 
         for (Position b: a) {
 
-            System.out.println("locations.add(new Position("+(b.x*sizeFactor) + ", " +(b.y*sizeFactor) + ", " + b.headSwitch+"));");
-            
+            //System.out.println("locations.add(new Position("+(b.x*sizeFactor) + ", " +(b.y*sizeFactor) + ", " + b.headSwitch+"));");
+            System.out.println("["+(b.x*sizeFactor) + ", " +(b.y*sizeFactor) + ", " + b.headSwitch+"));");
+           
         }
         System.out.println("PRINTED ARRAY OF SIZE: " + a.size());
 

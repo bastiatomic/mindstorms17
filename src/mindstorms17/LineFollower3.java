@@ -15,7 +15,7 @@ public class LineFollower3 {
     // this class requires a CANNY or LINECOMPLETER file ! Do not use a COMPRESSED
     // file with me
     int WHITE = new Color(255, 255, 255).getRGB();
-    int BLACK = new Color(20, 20, 20).getRGB(); // or 20,20,20
+    int BLACK = new Color(20,20,20).getRGB(); // or 20,20,20
     double sizeFactor = 1;
 
     int WIDTH;
@@ -44,6 +44,7 @@ public class LineFollower3 {
                     int startX = x;
                     int startY = y;
                     locations.add(new Position(x, y, true));
+                    
                     img.setRGB(x, y, WHITE);
                     debugger = 0;
 
@@ -75,6 +76,8 @@ public class LineFollower3 {
 
         // reverse connecting adjacent nodes
         // alle Ecken/Kanten werden gefiltert
+        /// *** REMOVE UNECESSARY CALLS TO move()
+        
         for (int i = 1; i < locations.size() - 1; i++) {
 
             // wenn der Vorgänger und Nachfolger nur um 1 unterscheidet in dieselbe
@@ -105,7 +108,6 @@ public class LineFollower3 {
             if (str.fixer)
                 iter.remove();
         }
-
         return locations;
     }
 

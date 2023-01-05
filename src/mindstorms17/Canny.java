@@ -14,10 +14,10 @@ public class Canny {
 
     public static void main(String[] args) throws IOException {
         
-        final String fileName = "2070_tycoon_logo";
+        final String fileName = "apple_logo";
         final String fileType = "png";
 
-        BufferedImage in = ImageIO.read(new File("graphics/"+fileName+"."+fileType));
+        BufferedImage in = ImageIO.read(new File("src/graphics/"+fileName+"."+fileType));
         BufferedImage newImage = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g = newImage.createGraphics();
@@ -32,7 +32,7 @@ public class Canny {
         detector.process();
         BufferedImage exportImage = detector.getEdgesImage();
 
-        File outputfile2 = new File("graphics/"+fileName+"_CANNY.png");
+        File outputfile2 = new File("src/graphics/"+fileName+"_CANNY.png");
         ImageIO.write(exportImage, "png", outputfile2);
 
     }

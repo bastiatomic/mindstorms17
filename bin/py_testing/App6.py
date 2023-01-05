@@ -1,3 +1,32 @@
+import pygame
+import sys
+import random
+from pygame.locals import *
+from math import cos, sin
+pygame.init()
+pygame.font.init()
+
+# Colours
+BACKGROUND = (255, 255, 255)
+my_font = pygame.font.SysFont('Arial', 15)
+
+# Game Setup
+FPS = 30
+fpsClock = pygame.time.Clock()
+WINDOW_WIDTH = 700
+WINDOW_HEIGHT = 700 + 50
+
+WIN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+pygame.display.set_caption('Ascende superius')
+
+# The main function that controls the game
+
+looping = True
+
+x_pointer, y_pointer = int(WINDOW_WIDTH/2), int(WINDOW_HEIGHT/2)
+
+list1 = [
+
 [99, 8, 0], 
 [100, 8, 1], 
 [101, 9, 1], 
@@ -534,3 +563,38 @@
 [46, 138, 1], 
 [46, 137, 1], 
 [91, 138, 0], 
+
+
+]
+
+WIN.set_at((x_pointer, y_pointer), (0, 255, 0))
+
+# The main game loop
+runningHead = True
+while looping:
+    fpsClock.tick(FPS)
+    for event in pygame.event.get():
+
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+    if(runningHead):
+
+        for obj in list1:
+
+            pygame.time.delay(100)
+
+            if(True):
+
+                x_pointer = obj[0]
+                y_pointer = obj[1]
+
+                
+                
+                WIN.set_at((int(x_pointer), int(y_pointer)), (255, 0, 0))
+
+                pygame.draw.rect(WIN, (200, 200, 200), pygame.Rect(0, WINDOW_HEIGHT-70, 300, 70))
+                WIN.blit(my_font.render("head at: " + str((x_pointer)) + ", "+str((y_pointer)), False, (0, 0, 0)), (5, WINDOW_HEIGHT-60))
+            pygame.display.update()
+        runningHead = False

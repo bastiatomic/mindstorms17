@@ -27,11 +27,15 @@ public class Main {
 		// SOA applied here
 		// ATTENTION: the head is down at start;
 
-		//BufferedImage img_CANNY = ImageIO.read(new File("src/mindstorms17/2070_tycoon_logo_CANNY.png"));
+		BufferedImage img_CANNY = ImageIO.read(new File("src/graphics/apple_logo_CANNY.png"));
     
-		//LineFollower3 img = new LineFollower3(img_CANNY);
 
-		/*img.getLocationList();
+		//img.getCanny();
+
+		LineFollower3 img = new LineFollower3(img_CANNY);
+
+
+		img.getLocationList();
 		System.out.println(img.locations.size());
 
 		PrintWriter f0 = new PrintWriter(new FileWriter("output.txt"));
@@ -39,12 +43,13 @@ public class Main {
 		//fix stuff
 		for(Position a: img.locations)
 		{
-			f0.println("locations.add(new Position("+ a.x + ", " + a.y + ", " + a.headSwitch+ "));");
+			String str = String.valueOf(a.headSwitch);
+			f0.println("["+a.x + ", " + a.y + ", " + str.substring(0, 1).toUpperCase() + str.substring(1) + "], ");
 			
 		}
 		f0.close();
 		System.out.println(img.locations.size());
-		System.exit(0); */
+		System.exit(0); 
 
 		locations = locationsRawList.addElements();
 		
