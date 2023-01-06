@@ -10,7 +10,7 @@ import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
 public class Robot {
-    String headPos;
+    Boolean headPos;
     int realPosX;
     int realPosY;
     double exactPosX;
@@ -23,7 +23,7 @@ public class Robot {
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
 
-    Robot(int a, int b, String c,
+    Robot(int a, int b, Boolean c,
             RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
         this.exactPosX = a;
         this.exactPosY = a;

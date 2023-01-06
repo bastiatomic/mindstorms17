@@ -9,6 +9,7 @@ import java.awt.Color;
 
 import javax.imageio.ImageIO;
  // @author Tom Gibara
+ //stolen from http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
 
 public class Canny {
 
