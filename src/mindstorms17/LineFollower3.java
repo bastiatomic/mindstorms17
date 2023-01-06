@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import java_testing.Position;
 
 public class LineFollower3 {
+    //TODO: kill me
 
     // this class requires a CANNY or LINECOMPLETER file ! Do not use a COMPRESSED
     // file with me

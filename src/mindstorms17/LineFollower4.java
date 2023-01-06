@@ -10,6 +10,7 @@ import java.awt.Color;
 import javax.imageio.ImageIO;
 
 public class LineFollower4 {
+    //TODO: kill me
     static int WHITE = new Color(255, 255, 255).getRGB();
     static int BLACK = new Color(20,20,20).getRGB(); // or 20,20,20
     static int RED = new Color(255,0,0).getRGB();

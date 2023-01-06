@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import java_testing.Position;
 
 public class LineFollower5 {
+    //TODO: kill me, i was copied to ImageService.java
     static int WHITE = new Color(255, 255, 255).getRGB();
     static int BLACK = new Color(20,20,20).getRGB(); // or 20,20,20
     static int RED = new Color(255,0,0).getRGB();

@@ -1,51 +1,21 @@
 package mindstorms17;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
-import java.awt.Color;
 
-import javax.imageio.ImageIO;
- // @author Tom Gibara
- //stolen from http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
 
-public class Canny {
+public class CannyRaw {
+	//kill me: i was adapted and moved to Canny.java
 
-    public static void main(String[] args) throws IOException {
-        
-        final String fileName = "2070_tycoon_logo_150";
-        final String fileType = "png";
-
-        BufferedImage in = ImageIO.read(new File("src/graphics/"+fileName+"."+fileType));
-
-		BufferedImage convertedImg = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_RGB);
-    	convertedImg.getGraphics().drawImage(in, 0, 0, null);
-        /*BufferedImage newImage = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_RGB);
-
-        Graphics2D g = newImage.createGraphics();
-        g.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-        g.dispose();
-
-        //File outputfile = new File("graphics/"+fileName+"_TYPE_ARGB.png");
-        //ImageIO.write(newImage, "png", outputfile);*/
-
-        Canny detector = new Canny();
-        detector.setSourceImage(convertedImg);
-        detector.process();
-        BufferedImage exportImage = detector.getEdgesImage();
-
-        File outputfile2 = new File("src/graphics/"+fileName+"_CANNY.png");
-        ImageIO.write(exportImage, "png", outputfile2);
-
-    }
-
+	// statics
+	
 	private final static float GAUSSIAN_CUT_OFF = 0.005f;
 	private final static float MAGNITUDE_SCALE = 100F;
 	private final static float MAGNITUDE_LIMIT = 1000F;
 	private final static int MAGNITUDE_MAX = (int) (MAGNITUDE_SCALE * MAGNITUDE_LIMIT);
 
+	// fields
+	
 	private int height;
 	private int width;
 	private int picsize;
@@ -65,18 +35,40 @@ public class Canny {
 	private float[] xGradient;
 	private float[] yGradient;
 	
-
-	public Canny() {
-		lowThreshold = 0.5f; //default is 2.5f
-		highThreshold = 2.5f; // default is 7.5ff
+	// constructors
+	
+	/**
+	 * Constructs a new detector with default parameters.
+	 */
+	
+	public CannyRaw() {
+		lowThreshold = 2.5f;
+		highThreshold = 7.5f;
 		gaussianKernelRadius = 2f;
 		gaussianKernelWidth = 16;
 		contrastNormalized = false;
 	}
 
+	// accessors
+	
+	/**
+	 * The image that provides the luminance data used by this detector to
+	 * generate edges.
+	 * 
+	 * @return the source image, or null
+	 */
+	
 	public BufferedImage getSourceImage() {
 		return sourceImage;
 	}
+	
+	/**
+	 * Specifies the image that will provide the luminance data in which edges
+	 * will be detected. A source image must be set before the process method
+	 * is called.
+	 *  
+	 * @param image a source of luminance data
+	 */
 	
 	public void setSourceImage(BufferedImage image) {
 		sourceImage = image;
@@ -93,21 +85,6 @@ public class Canny {
 	 */
 	
 	public BufferedImage getEdgesImage() {
-
-        int BLACK = new Color(0,0,0).getRGB();
-        int WHITE = new Color(255,255,255).getRGB();
-        int BLACK2 = new Color(20,20,20).getRGB();
-
-
-        for (int i = 0; i < edgesImage.getWidth(); i++) {
-            for (int j = 0; j < edgesImage.getHeight(); j++) {
-
-                if(edgesImage.getRGB(i,j) == BLACK){
-                    edgesImage.setRGB(i,j, WHITE);
-                }  else {edgesImage.setRGB(i,j, BLACK2);}
-        
-            }
-        }
 		return edgesImage;
 	}
  
@@ -255,7 +232,6 @@ public class Canny {
 		performHysteresis(low, high);
 		thresholdEdges();
 		writeEdges(data);
-
 	}
  
 	// private utility methods
@@ -271,7 +247,18 @@ public class Canny {
 			yGradient = new float[picsize];
 		}
 	}
-
+	
+	//NOTE: The elements of the method below (specifically the technique for
+	//non-maximal suppression and the technique for gradient computation)
+	//are derived from an implementation posted in the following forum (with the
+	//clear intent of others using the code):
+	//  http://forum.java.sun.com/thread.jspa?threadID=546211&start=45&tstart=0
+	//My code effectively mimics the algorithm exhibited above.
+	//Since I don't know the providence of the code that was posted it is a
+	//possibility (though I think a very remote one) that this code violates
+	//someone's intellectual property rights. If this concerns you feel free to
+	//contact me for an alternative, though less efficient, implementation.
+	
 	private void computeGradients(float kernelRadius, int kernelWidth) {
 		
 		//generate the gaussian convolution masks
@@ -454,10 +441,7 @@ public class Canny {
 	}
 	
 	private void readLuminance() {
-		//TODO: the if statements mights be deleted, because the input is TYPE_INT_RGB only
 		int type = sourceImage.getType();
-		System.out.println(type);
-		System.out.println(type == BufferedImage.TYPE_INT_RGB);
 		if (type == BufferedImage.TYPE_INT_RGB || type == BufferedImage.TYPE_INT_ARGB) {
 			int[] pixels = (int[]) sourceImage.getData().getDataElements(0, 0, width, height, null);
 			for (int i = 0; i < picsize; i++) {
@@ -467,8 +451,27 @@ public class Canny {
 				int b = p & 0xff;
 				data[i] = luminance(r, g, b);
 			}
-		} else {
-			throw new IllegalArgumentException("I need a TYPE_INT_RGB; Unsupported image type: " + type);
+		} else if (type == BufferedImage.TYPE_BYTE_GRAY) {
+			byte[] pixels = (byte[]) sourceImage.getData().getDataElements(0, 0, width, height, null);
+			for (int i = 0; i < picsize; i++) {
+				data[i] = (pixels[i] & 0xff);
+			}
+		} else if (type == BufferedImage.TYPE_USHORT_GRAY) {
+			short[] pixels = (short[]) sourceImage.getData().getDataElements(0, 0, width, height, null);
+			for (int i = 0; i < picsize; i++) {
+				data[i] = (pixels[i] & 0xffff) / 256;
+			}
+		} else if (type == BufferedImage.TYPE_3BYTE_BGR) {
+            byte[] pixels = (byte[]) sourceImage.getData().getDataElements(0, 0, width, height, null);
+            int offset = 0;
+            for (int i = 0; i < picsize; i++) {
+                int b = pixels[offset++] & 0xff;
+                int g = pixels[offset++] & 0xff;
+                int r = pixels[offset++] & 0xff;
+                data[i] = luminance(r, g, b);
+            }
+        } else {
+			throw new IllegalArgumentException("Unsupported image type: " + type);
 		}
 	}
  
