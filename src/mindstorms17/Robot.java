@@ -65,8 +65,8 @@ public class Robot {
         rotationsNeededB += (int) thresholdY;
 
         // removing excesshreshold (1+)
-        thresholdX -= (int) thresholdX;
-        thresholdY -= (int) thresholdY;
+        this.thresholdX -= (int) this.thresholdX;
+        this.thresholdY -= (int) this.thresholdY;
 
         double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;
@@ -90,7 +90,8 @@ public class Robot {
         this.chainMotor.waitComplete();
         this.wheelMotor.waitComplete();
     }
-    void moveToPos(int x, int y) { // distance in mm;
+    
+    void moveToPosLEGACY(int x, int y) { // distance in mm;
         // WHATIS: I move the motors in two directions simultanesouly while respecting
         // the offset it will generate
 
@@ -102,12 +103,12 @@ public class Robot {
         this.thresholdY += (rotationsNeededB - (int) rotationsNeededB);
 
         // adding threshold (zero or one)
-        rotationsNeededA += (int) thresholdX;
-        rotationsNeededB += (int) thresholdY;
+        rotationsNeededA += (int) this.thresholdX;
+        rotationsNeededB += (int) this.thresholdY;
 
         // removing excesshreshold (1+)
-        thresholdX -= (int) thresholdX;
-        thresholdY -= (int) thresholdY;
+        this.thresholdX -= (int) this.thresholdX;
+        this.thresholdY -= (int) this.thresholdY;
 
         double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;
@@ -122,6 +123,39 @@ public class Robot {
         this.realPosX -= rotationsNeededA;
         this.realPosY -= rotationsNeededB;
 
+        this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
+        this.chainMotor.startSynchronization();
+        this.chainMotor.setSpeed((int) speedA);
+        this.wheelMotor.setSpeed((int) speedB);
+        this.chainMotor.rotate((int) rotationsNeededA); // WARNING: conversion to int
+        this.wheelMotor.rotate((int) rotationsNeededB);
+        // Delay.msDelay( (long) timeForLength*1000);
+        this.chainMotor.endSynchronization();
+        this.chainMotor.waitComplete();
+        this.wheelMotor.waitComplete();
+    }
+
+    void moveToPos(int x, int y){
+
+        double newMoveX = this.realPosX - x;
+        double newMoveY = this.realPosY -y;
+
+        double rotationsNeededA = newMoveX / mindstorms17.Gear.chainGear();
+        double rotationsNeededB = newMoveY / mindstorms17.Gear.wheelGear();
+
+        this.realPosX -= newMoveX;
+        this.realPosY -= newMoveY;
+
+        double speedA = 100; // magic number
+        double timeForLength = rotationsNeededA / speedA;
+        double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
+        
+        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0   
+    
+        /*
+         * What happens here: move both motors at each speed for 'timeForLength' seconds
+         * synchronized
+         */
         this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
         this.chainMotor.startSynchronization();
         this.chainMotor.setSpeed((int) speedA);

@@ -6,8 +6,10 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         
-        //TODO: execute App.java and the Main.main will be executes as lejos project
+        //TODO: execution is possible, main[] should be abstracted
+    	System.out.println("x");
         Main.main(null);
+        System.out.println("Y");
 
     }
     

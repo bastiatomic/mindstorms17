@@ -138,7 +138,8 @@ public class ImageService {
                             positionList.add(new Position(current_checking_pos[0], current_checking_pos[1], true, false));
                             noEndFound = false;*/
                         //}
-                        
+                        //TODO: the first shall be headSwitch=True
+                        //TODO: the last element is a duplicate and the headSwitch=True by last one
                         //TODO: check if size of positionList is different from last call
                         //technically no more pixels.
                         //positionList.add(new Position(current_checking_pos[0], current_checking_pos[1], true, false));
@@ -163,7 +164,8 @@ public class ImageService {
         for (Position b : this.positions) {
 
             // f0.println("["+b.x + ", " + b.y + ", " + b.headSwitch+"], ");
-            f0.println("img1.positions.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
+            //f0.println("img1.positions.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
+            f0.println("posList.append( (" + b.x + ", " + b.y +") )");
 
         }
         f0.close();

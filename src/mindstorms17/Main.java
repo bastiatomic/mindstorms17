@@ -36,7 +36,8 @@ public class Main {
 		img1.exportPositions();*/
 
 		//TODO: if this stuff works, OPTIMISE !!! 
-		img1.positions.add( new Position(99, 8, true)); 
+		//TODO: first position shall be headSwitch false, because head is already up
+		img1.positions.add( new Position(99, 8, false)); 
 img1.positions.add( new Position(100, 8, true)); 
 img1.positions.add( new Position(101, 9, false)); 
 img1.positions.add( new Position(102, 9, false)); 
@@ -572,11 +573,14 @@ img1.positions.add( new Position(93, 40, false));
 img1.positions.add( new Position(94, 40, false)); 
 img1.positions.add( new Position(95, 40, false)); 
 img1.positions.add( new Position(96, 40, false)); 
+img1.positions.add( new Position(100, 8, false)); 
+
+img1.positions.add(new Position(100, 8, true));
 
 
 
 		
-
+		
 		//CHAPTER 3: init start drawing //TODO: sometimes head-switch error; no "drive to x while head up"
 		myRobot.headSwitch(); // headUp expected // move to driveToHome()
 
@@ -587,9 +591,10 @@ img1.positions.add( new Position(96, 40, false));
 		//CHAPTER 4: moving & printing to all positions
 		int a = 0;
 		for (Position b : img1.positions) {
-			LCD.clear();
+			//LCD.clear();
 			LCD.drawString("[" + a + "/" + img1.positions.size() + "]", 0, 1);
-			LCD.drawInt((int)((double)a/(double)img1.positions.size()), 0, 2);
+			LCD.drawString("real: "+ myRobot.realPosX + ", " + myRobot.realPosY, 0, 2);
+			LCD.drawString("thres: "+myRobot.thresholdX + ", " + myRobot.thresholdY, 0, 3);
 			LCD.drawString("Take a hike,", 0, 6);
 			LCD.drawString("be curious", 1, 7);
 
