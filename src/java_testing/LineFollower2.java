@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
 
+import mindstorms17.Position;
+
 public class LineFollower2 {
 
     //this class requires a CANNY or LINECOMPLETER file ! Do not use a COMPRESSED file with me

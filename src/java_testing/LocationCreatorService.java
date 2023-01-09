@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
 
+import mindstorms17.Position;
+
 public class LocationCreatorService {
     // README: I need a mono-color image and will create a travelerList to work with
     // the following system:

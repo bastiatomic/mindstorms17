@@ -1,4 +1,4 @@
-package mindstorms17;
+package java_testing;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
 
-import java_testing.Position;
+import mindstorms17.Position;
 
 public class LineFollower5 {
     //TODO: kill me, i was copied to ImageService.java

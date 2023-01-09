@@ -1,4 +1,4 @@
-package mindstorms17;
+package java_testing;
 
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;

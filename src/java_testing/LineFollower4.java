@@ -1,4 +1,4 @@
-package mindstorms17;
+package java_testing;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

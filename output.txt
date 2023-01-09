@@ -1,1259 +1,536 @@
-[7, 7, true], 
-[142, 7, true], 
-[65, 15, true], 
-[66, 15, false], 
-[67, 15, false], 
-[68, 15, false], 
-[69, 15, false], 
-[70, 15, false], 
-[71, 15, false], 
-[72, 15, false], 
-[73, 15, false], 
-[74, 15, false], 
-[75, 15, false], 
-[76, 15, false], 
-[77, 15, false], 
-[78, 15, false], 
-[79, 15, false], 
-[80, 15, false], 
-[81, 15, false], 
-[82, 15, false], 
-[83, 15, false], 
-[84, 15, false], 
-[85, 16, false], 
-[86, 16, false], 
-[87, 16, false], 
-[88, 16, false], 
-[89, 16, false], 
-[90, 17, false], 
-[91, 17, false], 
-[92, 17, false], 
-[93, 18, false], 
-[94, 18, false], 
-[95, 18, false], 
-[96, 19, false], 
-[97, 19, false], 
-[98, 19, false], 
-[98, 20, false], 
-[99, 20, false], 
-[100, 20, false], 
-[100, 21, false], 
-[101, 21, false], 
-[102, 21, false], 
-[102, 22, false], 
-[103, 22, false], 
-[104, 23, false], 
-[105, 23, false], 
-[105, 24, false], 
-[106, 24, false], 
-[107, 24, false], 
-[107, 25, false], 
-[108, 25, false], 
-[108, 26, false], 
-[109, 26, false], 
-[110, 26, false], 
-[110, 27, false], 
-[111, 27, false], 
-[111, 28, false], 
-[112, 28, false], 
-[112, 29, false], 
-[113, 29, false], 
-[113, 30, false], 
-[114, 30, false], 
-[114, 31, false], 
-[115, 31, false], 
-[115, 32, false], 
-[116, 32, false], 
-[116, 33, false], 
-[117, 33, false], 
-[117, 34, false], 
-[118, 34, false], 
-[118, 35, false], 
-[119, 35, false], 
-[119, 36, false], 
-[120, 36, false], 
-[120, 37, false], 
-[120, 38, false], 
-[121, 38, false], 
-[121, 39, false], 
-[122, 39, false], 
-[122, 40, false], 
-[123, 41, false], 
-[123, 42, false], 
-[124, 42, false], 
-[124, 43, false], 
-[125, 44, false], 
-[125, 45, false], 
-[126, 45, false], 
-[126, 46, false], 
-[127, 47, false], 
-[127, 48, false], 
-[127, 49, false], 
-[128, 50, false], 
-[128, 51, false], 
-[128, 52, false], 
-[129, 53, false], 
-[129, 54, false], 
-[129, 55, false], 
-[130, 56, false], 
-[130, 57, false], 
-[130, 58, false], 
-[130, 59, false], 
-[131, 59, false], 
-[131, 60, false], 
-[131, 61, false], 
-[131, 62, false], 
-[131, 63, false], 
-[131, 64, false], 
-[132, 65, false], 
-[132, 66, false], 
-[132, 67, false], 
-[132, 68, false], 
-[132, 69, false], 
-[132, 70, false], 
-[132, 71, false], 
-[132, 72, false], 
-[132, 73, false], 
-[132, 74, false], 
-[132, 75, false], 
-[132, 76, false], 
-[132, 77, false], 
-[132, 78, false], 
-[132, 79, false], 
-[132, 80, false], 
-[131, 81, false], 
-[131, 82, false], 
-[131, 83, false], 
-[131, 84, false], 
-[131, 85, false], 
-[130, 86, false], 
-[130, 87, false], 
-[130, 88, false], 
-[129, 89, false], 
-[129, 90, false], 
-[129, 91, false], 
-[128, 92, false], 
-[128, 93, false], 
-[128, 94, false], 
-[127, 94, false], 
-[127, 95, false], 
-[127, 96, false], 
-[126, 97, false], 
-[126, 98, false], 
-[125, 99, false], 
-[125, 100, false], 
-[124, 100, false], 
-[124, 101, false], 
-[124, 102, false], 
-[123, 102, false], 
-[123, 103, false], 
-[122, 104, false], 
-[122, 105, false], 
-[121, 105, false], 
-[121, 106, false], 
-[120, 107, false], 
-[120, 108, false], 
-[119, 108, false], 
-[119, 109, false], 
-[118, 109, false], 
-[118, 110, false], 
-[117, 110, false], 
-[117, 111, false], 
-[116, 111, false], 
-[116, 112, false], 
-[115, 112, false], 
-[115, 113, false], 
-[114, 113, false], 
-[114, 114, false], 
-[113, 114, false], 
-[113, 115, false], 
-[112, 115, false], 
-[112, 116, false], 
-[111, 116, false], 
-[111, 117, false], 
-[110, 117, false], 
-[110, 118, false], 
-[109, 118, false], 
-[108, 118, false], 
-[108, 119, false], 
-[107, 119, false], 
-[107, 120, false], 
-[106, 120, false], 
-[105, 120, false], 
-[105, 121, false], 
-[104, 121, false], 
-[104, 122, false], 
-[103, 122, false], 
-[102, 122, false], 
-[102, 123, false], 
-[101, 123, false], 
-[100, 123, false], 
-[100, 124, false], 
-[99, 124, false], 
-[98, 124, false], 
-[98, 125, false], 
-[97, 125, false], 
-[96, 125, false], 
-[95, 126, false], 
-[94, 126, false], 
-[93, 126, false], 
-[92, 127, false], 
-[91, 127, false], 
-[90, 127, false], 
-[89, 128, false], 
-[88, 128, false], 
-[87, 128, false], 
-[86, 128, false], 
-[85, 128, false], 
-[85, 129, false], 
-[84, 129, false], 
-[83, 129, false], 
-[82, 129, false], 
-[81, 129, false], 
-[80, 129, false], 
-[79, 129, false], 
-[78, 129, false], 
-[77, 130, false], 
-[76, 130, false], 
-[75, 130, false], 
-[74, 130, false], 
-[73, 130, false], 
-[72, 130, false], 
-[71, 129, false], 
-[70, 129, false], 
-[69, 129, false], 
-[68, 129, false], 
-[67, 129, false], 
-[66, 129, false], 
-[65, 129, false], 
-[64, 128, false], 
-[63, 128, false], 
-[62, 128, false], 
-[61, 128, false], 
-[60, 128, false], 
-[60, 127, false], 
-[59, 127, false], 
-[58, 127, false], 
-[57, 127, false], 
-[56, 126, false], 
-[55, 126, false], 
-[54, 126, false], 
-[54, 125, false], 
-[53, 125, false], 
-[52, 125, false], 
-[51, 124, false], 
-[50, 124, false], 
-[49, 124, false], 
-[49, 123, false], 
-[48, 123, false], 
-[47, 123, false], 
-[47, 122, false], 
-[46, 122, false], 
-[45, 121, false], 
-[44, 121, false], 
-[44, 120, false], 
-[43, 120, false], 
-[42, 120, false], 
-[42, 119, false], 
-[41, 119, false], 
-[41, 118, false], 
-[40, 118, false], 
-[39, 117, false], 
-[38, 117, false], 
-[38, 116, false], 
-[37, 116, false], 
-[37, 115, false], 
-[36, 115, false], 
-[36, 114, false], 
-[35, 114, false], 
-[35, 113, false], 
-[34, 113, false], 
-[34, 112, false], 
-[33, 112, false], 
-[33, 111, false], 
-[32, 111, false], 
-[32, 110, false], 
-[31, 110, false], 
-[31, 109, false], 
-[30, 109, false], 
-[30, 108, false], 
-[29, 107, false], 
-[29, 106, false], 
-[28, 106, false], 
-[28, 105, false], 
-[27, 105, false], 
-[27, 104, false], 
-[27, 103, false], 
-[26, 103, false], 
-[26, 102, false], 
-[25, 102, false], 
-[25, 101, false], 
-[25, 100, false], 
-[24, 100, false], 
-[24, 99, false], 
-[24, 98, false], 
-[23, 98, false], 
-[23, 97, false], 
-[23, 96, false], 
-[22, 96, false], 
-[22, 95, false], 
-[22, 94, false], 
-[21, 94, false], 
-[21, 93, false], 
-[21, 92, false], 
-[20, 91, false], 
-[20, 90, false], 
-[20, 89, false], 
-[19, 88, false], 
-[19, 87, false], 
-[19, 86, false], 
-[19, 85, false], 
-[18, 84, false], 
-[18, 83, false], 
-[18, 82, false], 
-[18, 81, false], 
-[18, 80, false], 
-[18, 79, false], 
-[17, 78, false], 
-[17, 77, false], 
-[17, 76, false], 
-[17, 75, false], 
-[17, 74, false], 
-[17, 73, false], 
-[17, 72, false], 
-[17, 71, false], 
-[17, 70, false], 
-[17, 69, false], 
-[17, 68, false], 
-[17, 67, false], 
-[17, 66, false], 
-[18, 65, false], 
-[18, 64, false], 
-[18, 63, false], 
-[18, 62, false], 
-[18, 61, false], 
-[18, 60, false], 
-[19, 60, false], 
-[19, 59, false], 
-[19, 58, false], 
-[19, 57, false], 
-[19, 56, false], 
-[20, 56, false], 
-[20, 55, false], 
-[20, 54, false], 
-[20, 53, false], 
-[21, 53, false], 
-[21, 52, false], 
-[21, 51, false], 
-[21, 50, false], 
-[22, 49, false], 
-[22, 48, false], 
-[22, 47, false], 
-[23, 47, false], 
-[23, 46, false], 
-[23, 45, false], 
-[24, 45, false], 
-[24, 44, false], 
-[25, 44, false], 
-[25, 43, false], 
-[25, 42, false], 
-[26, 42, false], 
-[26, 41, false], 
-[27, 41, false], 
-[27, 40, false], 
-[27, 39, false], 
-[28, 39, false], 
-[28, 38, false], 
-[29, 38, false], 
-[29, 37, false], 
-[30, 37, false], 
-[30, 36, false], 
-[30, 35, false], 
-[31, 35, false], 
-[31, 34, false], 
-[32, 34, false], 
-[32, 33, false], 
-[33, 33, false], 
-[33, 32, false], 
-[34, 32, false], 
-[34, 31, false], 
-[35, 31, false], 
-[35, 30, false], 
-[36, 30, false], 
-[36, 29, false], 
-[37, 29, false], 
-[37, 28, false], 
-[38, 28, false], 
-[38, 27, false], 
-[39, 27, false], 
-[40, 27, false], 
-[40, 26, false], 
-[41, 26, false], 
-[41, 25, false], 
-[42, 25, false], 
-[43, 24, false], 
-[44, 24, false], 
-[44, 23, false], 
-[45, 23, false], 
-[46, 22, false], 
-[47, 22, false], 
-[48, 21, false], 
-[49, 21, false], 
-[50, 20, false], 
-[51, 20, false], 
-[52, 19, false], 
-[53, 19, false], 
-[54, 19, false], 
-[54, 18, false], 
-[55, 18, false], 
-[56, 18, false], 
-[57, 17, false], 
-[58, 17, false], 
-[59, 17, false], 
-[60, 17, false], 
-[60, 16, false], 
-[61, 16, false], 
-[62, 16, false], 
-[63, 16, false], 
-[64, 16, false], 
-[73, 33, true], 
-[74, 33, false], 
-[75, 33, false], 
-[76, 33, false], 
-[76, 34, false], 
-[77, 34, false], 
-[77, 35, false], 
-[77, 36, false], 
-[77, 37, false], 
-[78, 38, false], 
-[78, 39, false], 
-[78, 40, false], 
-[78, 41, false], 
-[78, 42, false], 
-[78, 43, false], 
-[79, 44, false], 
-[79, 45, false], 
-[79, 46, false], 
-[79, 47, false], 
-[79, 48, false], 
-[79, 49, false], 
-[79, 50, false], 
-[80, 50, false], 
-[80, 51, false], 
-[80, 52, false], 
-[80, 53, false], 
-[80, 54, false], 
-[80, 55, false], 
-[80, 56, false], 
-[81, 57, false], 
-[81, 58, false], 
-[81, 59, false], 
-[81, 60, false], 
-[81, 61, false], 
-[82, 61, false], 
-[83, 61, false], 
-[84, 61, false], 
-[85, 61, false], 
-[86, 61, false], 
-[86, 60, false], 
-[87, 60, false], 
-[88, 60, false], 
-[89, 59, false], 
-[90, 59, false], 
-[91, 59, false], 
-[92, 58, false], 
-[93, 58, false], 
-[94, 58, false], 
-[94, 57, false], 
-[95, 57, false], 
-[96, 57, false], 
-[97, 57, false], 
-[97, 56, false], 
-[98, 56, false], 
-[99, 56, false], 
-[100, 55, false], 
-[101, 55, false], 
-[102, 55, false], 
-[103, 54, false], 
-[104, 54, false], 
-[105, 54, false], 
-[105, 53, false], 
-[106, 53, false], 
-[107, 53, false], 
-[108, 52, false], 
-[109, 52, false], 
-[110, 52, false], 
-[111, 51, false], 
-[112, 51, false], 
-[113, 51, false], 
-[113, 50, false], 
-[114, 50, false], 
-[115, 50, false], 
-[116, 49, false], 
-[117, 49, false], 
-[118, 49, false], 
-[118, 48, false], 
-[119, 48, false], 
-[120, 48, false], 
-[121, 48, false], 
-[122, 49, false], 
-[122, 50, false], 
-[123, 50, false], 
-[122, 51, false], 
-[122, 52, false], 
-[121, 52, false], 
-[121, 53, false], 
-[120, 53, false], 
-[120, 54, false], 
-[119, 54, false], 
-[119, 55, false], 
-[118, 55, false], 
-[118, 56, false], 
-[118, 57, false], 
-[118, 58, false], 
-[117, 59, false], 
-[117, 60, false], 
-[116, 60, false], 
-[116, 61, false], 
-[115, 61, false], 
-[115, 62, false], 
-[114, 62, false], 
-[113, 62, false], 
-[113, 63, false], 
-[112, 63, false], 
-[112, 64, false], 
-[111, 64, false], 
-[110, 64, false], 
-[110, 65, false], 
-[109, 65, false], 
-[109, 66, false], 
-[108, 66, false], 
-[108, 67, false], 
-[107, 67, false], 
-[107, 68, false], 
-[106, 68, false], 
-[105, 68, false], 
-[105, 69, false], 
-[104, 69, false], 
-[104, 70, false], 
-[103, 70, false], 
-[103, 71, false], 
-[102, 71, false], 
-[102, 72, false], 
-[101, 72, false], 
-[101, 73, false], 
-[101, 74, false], 
-[101, 75, false], 
-[101, 76, false], 
-[101, 77, false], 
-[72, 34, true], 
-[72, 35, false], 
-[71, 35, false], 
-[71, 36, false], 
-[71, 37, false], 
-[71, 38, false], 
-[71, 39, false], 
-[70, 40, false], 
-[70, 41, false], 
-[70, 42, false], 
-[70, 43, false], 
-[70, 44, false], 
-[70, 45, false], 
-[69, 46, false], 
-[69, 47, false], 
-[69, 48, false], 
-[69, 49, false], 
-[69, 50, false], 
-[69, 51, false], 
-[69, 52, false], 
-[68, 53, false], 
-[68, 54, false], 
-[68, 55, false], 
-[68, 56, false], 
-[68, 57, false], 
-[68, 58, false], 
-[68, 59, false], 
-[67, 59, false], 
-[67, 60, false], 
-[67, 61, false], 
-[27, 46, true], 
-[27, 47, false], 
-[28, 47, false], 
-[28, 48, false], 
-[29, 48, false], 
-[30, 48, false], 
-[31, 49, false], 
-[32, 49, false], 
-[33, 50, false], 
-[34, 50, false], 
-[35, 50, false], 
-[36, 51, false], 
-[37, 51, false], 
-[38, 51, false], 
-[38, 52, false], 
-[39, 52, false], 
-[40, 52, false], 
-[41, 53, false], 
-[42, 53, false], 
-[43, 53, false], 
-[44, 54, false], 
-[45, 54, false], 
-[46, 54, false], 
-[46, 55, false], 
-[47, 55, false], 
-[48, 55, false], 
-[49, 56, false], 
-[50, 56, false], 
-[51, 56, false], 
-[52, 57, false], 
-[53, 57, false], 
-[54, 57, false], 
-[54, 58, false], 
-[55, 58, false], 
-[56, 58, false], 
-[57, 58, false], 
-[57, 59, false], 
-[58, 59, false], 
-[59, 59, false], 
-[60, 60, false], 
-[61, 60, false], 
-[62, 60, false], 
-[62, 61, false], 
-[63, 61, false], 
-[64, 61, false], 
-[65, 61, false], 
-[64, 62, false], 
-[27, 48, true], 
-[27, 49, false], 
-[26, 50, false], 
-[26, 51, false], 
-[26, 52, false], 
-[27, 52, false], 
-[27, 53, false], 
-[28, 53, false], 
-[28, 54, false], 
-[29, 54, false], 
-[29, 55, false], 
-[30, 55, false], 
-[30, 56, false], 
-[30, 57, false], 
-[31, 58, false], 
-[31, 59, false], 
-[32, 60, false], 
-[32, 61, false], 
-[33, 61, false], 
-[34, 62, false], 
-[35, 62, false], 
-[35, 63, false], 
-[36, 63, false], 
-[37, 64, false], 
-[38, 64, false], 
-[38, 65, false], 
-[39, 65, false], 
-[39, 66, false], 
-[40, 66, false], 
-[41, 67, false], 
-[42, 67, false], 
-[42, 68, false], 
-[43, 68, false], 
-[43, 69, false], 
-[44, 69, false], 
-[44, 70, false], 
-[45, 70, false], 
-[45, 71, false], 
-[46, 71, false], 
-[46, 72, false], 
-[47, 72, false], 
-[47, 73, false], 
-[48, 74, false], 
-[48, 75, false], 
-[48, 76, false], 
-[48, 77, false], 
-[47, 76, false], 
-[24, 51, true], 
-[37, 58, true], 
-[38, 58, false], 
-[38, 59, false], 
-[39, 59, false], 
-[40, 59, false], 
-[40, 60, false], 
-[41, 60, false], 
-[42, 61, false], 
-[43, 61, false], 
-[43, 62, false], 
-[44, 62, false], 
-[45, 62, false], 
-[45, 63, false], 
-[46, 63, false], 
-[46, 64, false], 
-[47, 64, false], 
-[48, 64, false], 
-[48, 65, false], 
-[49, 65, false], 
-[49, 66, false], 
-[50, 66, false], 
-[51, 66, false], 
-[51, 67, false], 
-[52, 67, false], 
-[52, 68, false], 
-[53, 68, false], 
-[54, 68, false], 
-[54, 69, false], 
-[55, 69, false], 
-[55, 70, false], 
-[56, 70, false], 
-[57, 71, false], 
-[58, 71, false], 
-[58, 72, false], 
-[59, 73, false], 
-[59, 74, false], 
-[60, 75, false], 
-[60, 76, false], 
-[60, 77, false], 
-[61, 77, false], 
-[61, 78, false], 
-[61, 79, false], 
-[62, 80, false], 
-[62, 81, false], 
-[62, 82, false], 
-[62, 83, false], 
-[63, 83, false], 
-[63, 84, false], 
-[111, 58, true], 
-[112, 58, false], 
-[109, 59, true], 
-[110, 59, false], 
-[107, 60, true], 
-[108, 60, false], 
-[107, 61, false], 
-[106, 61, false], 
-[105, 61, false], 
-[105, 62, false], 
-[104, 62, false], 
-[103, 63, false], 
-[102, 63, false], 
-[102, 64, false], 
-[101, 64, false], 
-[100, 65, false], 
-[99, 65, false], 
-[99, 66, false], 
-[98, 66, false], 
-[97, 67, false], 
-[96, 67, false], 
-[96, 68, false], 
-[95, 68, false], 
-[94, 69, false], 
-[93, 69, false], 
-[93, 70, false], 
-[92, 70, false], 
-[92, 71, false], 
-[91, 71, false], 
-[91, 72, false], 
-[90, 72, false], 
-[90, 73, false], 
-[89, 73, false], 
-[89, 74, false], 
-[89, 75, false], 
-[88, 75, false], 
-[88, 76, false], 
-[88, 77, false], 
-[87, 78, false], 
-[87, 79, false], 
-[87, 80, false], 
-[86, 81, false], 
-[86, 82, false], 
-[86, 83, false], 
-[86, 84, false], 
-[85, 84, false], 
-[85, 85, false], 
-[85, 86, false], 
-[85, 87, false], 
-[85, 88, false], 
-[84, 62, true], 
-[68, 63, true], 
-[69, 64, false], 
-[69, 65, false], 
-[70, 66, false], 
-[70, 67, false], 
-[70, 68, false], 
-[71, 68, false], 
-[71, 69, false], 
-[71, 70, false], 
-[72, 71, false], 
-[72, 72, false], 
-[72, 73, false], 
-[73, 73, false], 
-[73, 74, false], 
-[74, 74, false], 
-[75, 74, false], 
-[76, 73, false], 
-[76, 72, false], 
-[76, 71, false], 
-[77, 71, false], 
-[77, 70, false], 
-[77, 69, false], 
-[78, 69, false], 
-[78, 68, false], 
-[78, 67, false], 
-[79, 66, false], 
-[79, 65, false], 
-[80, 64, false], 
-[80, 63, false], 
-[65, 65, true], 
-[65, 66, false], 
-[65, 67, false], 
-[66, 67, false], 
-[66, 68, false], 
-[66, 69, false], 
-[67, 70, false], 
-[67, 71, false], 
-[68, 72, false], 
-[68, 73, false], 
-[69, 74, false], 
-[69, 75, false], 
-[69, 76, false], 
-[69, 77, false], 
-[68, 78, false], 
-[68, 79, false], 
-[67, 80, false], 
-[67, 81, false], 
-[67, 82, false], 
-[66, 82, false], 
-[66, 83, false], 
-[66, 84, false], 
-[65, 84, false], 
-[65, 85, false], 
-[64, 86, false], 
-[64, 87, false], 
-[65, 88, false], 
-[83, 65, true], 
-[83, 66, false], 
-[83, 67, false], 
-[82, 68, false], 
-[82, 69, false], 
-[82, 70, false], 
-[81, 70, false], 
-[81, 71, false], 
-[81, 72, false], 
-[80, 73, false], 
-[80, 74, false], 
-[79, 75, false], 
-[79, 76, false], 
-[79, 77, false], 
-[80, 77, false], 
-[80, 78, false], 
-[80, 79, false], 
-[81, 79, false], 
-[81, 80, false], 
-[81, 81, false], 
-[82, 81, false], 
-[82, 82, false], 
-[82, 83, false], 
-[83, 83, false], 
-[83, 84, false], 
-[83, 85, false], 
-[84, 85, false], 
-[84, 86, false], 
-[115, 65, true], 
-[115, 66, false], 
-[115, 67, false], 
-[115, 68, false], 
-[115, 69, false], 
-[114, 70, false], 
-[114, 71, false], 
-[113, 71, false], 
-[113, 72, false], 
-[112, 72, false], 
-[112, 73, false], 
-[111, 73, false], 
-[111, 74, false], 
-[110, 74, false], 
-[109, 74, false], 
-[109, 75, false], 
-[108, 75, false], 
-[108, 76, false], 
-[107, 76, false], 
-[107, 77, false], 
-[106, 77, false], 
-[106, 78, false], 
-[105, 78, false], 
-[105, 79, false], 
-[104, 79, false], 
-[104, 80, false], 
-[103, 80, false], 
-[102, 80, false], 
-[102, 81, false], 
-[101, 81, false], 
-[101, 82, false], 
-[100, 82, false], 
-[100, 83, false], 
-[99, 83, false], 
-[99, 84, false], 
-[98, 84, false], 
-[98, 85, false], 
-[97, 85, false], 
-[97, 86, false], 
-[96, 86, false], 
-[96, 87, false], 
-[95, 87, false], 
-[95, 88, false], 
-[94, 88, false], 
-[94, 89, false], 
-[93, 89, false], 
-[93, 90, false], 
-[92, 90, false], 
-[92, 91, false], 
-[91, 91, false], 
-[91, 92, false], 
-[90, 92, false], 
-[90, 93, false], 
-[89, 93, false], 
-[89, 94, false], 
-[88, 94, false], 
-[88, 95, false], 
-[87, 96, false], 
-[86, 96, false], 
-[86, 97, false], 
-[87, 98, false], 
-[87, 99, false], 
-[88, 100, false], 
-[88, 101, false], 
-[88, 102, false], 
-[89, 102, false], 
-[89, 103, false], 
-[89, 104, false], 
-[90, 104, false], 
-[90, 105, false], 
-[90, 106, false], 
-[90, 107, false], 
-[90, 108, false], 
-[90, 109, false], 
-[89, 109, false], 
-[88, 109, false], 
-[87, 109, false], 
-[86, 109, false], 
-[85, 109, false], 
-[84, 108, false], 
-[84, 107, false], 
-[83, 107, false], 
-[83, 106, false], 
-[83, 105, false], 
-[83, 104, false], 
-[82, 104, false], 
-[82, 103, false], 
-[82, 102, false], 
-[82, 101, false], 
-[81, 100, false], 
-[81, 99, false], 
-[81, 98, false], 
-[80, 98, false], 
-[80, 97, false], 
-[80, 96, false], 
-[79, 96, false], 
-[79, 95, false], 
-[78, 95, false], 
-[78, 94, false], 
-[77, 94, false], 
-[76, 94, false], 
-[75, 93, false], 
-[74, 93, false], 
-[73, 93, false], 
-[72, 94, false], 
-[71, 94, false], 
-[70, 94, false], 
-[70, 95, false], 
-[69, 95, false], 
-[69, 96, false], 
-[69, 97, false], 
-[68, 97, false], 
-[68, 98, false], 
-[68, 99, false], 
-[67, 99, false], 
-[67, 100, false], 
-[67, 101, false], 
-[67, 102, false], 
-[66, 102, false], 
-[66, 103, false], 
-[66, 104, false], 
-[66, 105, false], 
-[66, 106, false], 
-[65, 106, false], 
-[65, 105, false], 
-[33, 66, true], 
-[34, 66, false], 
-[33, 67, false], 
-[33, 68, false], 
-[33, 69, false], 
-[34, 69, false], 
-[34, 70, false], 
-[35, 70, false], 
-[35, 71, false], 
-[36, 71, false], 
-[36, 72, false], 
-[37, 72, false], 
-[37, 73, false], 
-[38, 73, false], 
-[38, 74, false], 
-[39, 74, false], 
-[39, 75, false], 
-[40, 75, false], 
-[40, 76, false], 
-[41, 76, false], 
-[41, 77, false], 
-[42, 77, false], 
-[42, 78, false], 
-[43, 78, false], 
-[43, 79, false], 
-[44, 79, false], 
-[45, 79, false], 
-[45, 80, false], 
-[46, 80, false], 
-[46, 81, false], 
-[47, 81, false], 
-[47, 82, false], 
-[48, 82, false], 
-[48, 83, false], 
-[49, 83, false], 
-[49, 84, false], 
-[50, 84, false], 
-[51, 84, false], 
-[51, 85, false], 
-[52, 85, false], 
-[52, 86, false], 
-[53, 86, false], 
-[53, 87, false], 
-[54, 87, false], 
-[54, 88, false], 
-[55, 88, false], 
-[55, 89, false], 
-[56, 89, false], 
-[56, 90, false], 
-[57, 90, false], 
-[57, 91, false], 
-[58, 91, false], 
-[58, 92, false], 
-[59, 93, false], 
-[59, 94, false], 
-[60, 94, false], 
-[60, 95, false], 
-[61, 95, false], 
-[62, 96, false], 
-[62, 97, false], 
-[62, 98, false], 
-[61, 99, false], 
-[61, 100, false], 
-[60, 101, false], 
-[60, 102, false], 
-[59, 103, false], 
-[59, 104, false], 
-[58, 105, false], 
-[58, 106, false], 
-[58, 107, false], 
-[58, 108, false], 
-[59, 108, false], 
-[59, 109, false], 
-[60, 109, false], 
-[61, 109, false], 
-[62, 109, false], 
-[63, 109, false], 
-[64, 109, false], 
-[64, 108, false], 
-[65, 108, false], 
-[65, 107, false], 
-[37, 68, true], 
-[38, 69, false], 
-[39, 70, false], 
-[40, 70, false], 
-[40, 71, false], 
-[41, 71, false], 
-[41, 72, false], 
-[42, 72, false], 
-[42, 73, false], 
-[43, 73, false], 
-[44, 74, false], 
-[45, 75, false], 
-[111, 68, true], 
-[110, 69, false], 
-[109, 70, false], 
-[108, 71, false], 
-[107, 71, false], 
-[107, 72, false], 
-[106, 72, false], 
-[106, 73, false], 
-[105, 73, false], 
-[105, 74, false], 
-[104, 74, false], 
-[103, 75, false], 
-[50, 70, true], 
-[50, 71, false], 
-[51, 71, false], 
-[51, 72, false], 
-[52, 72, false], 
-[53, 73, false], 
-[54, 73, false], 
-[54, 74, false], 
-[55, 74, false], 
-[55, 75, false], 
-[55, 76, false], 
-[56, 76, false], 
-[56, 77, false], 
-[56, 78, false], 
-[57, 78, false], 
-[57, 79, false], 
-[57, 80, false], 
-[57, 81, false], 
-[58, 81, false], 
-[58, 82, false], 
-[58, 83, false], 
-[59, 84, false], 
-[59, 85, false], 
-[60, 86, false], 
-[60, 87, false], 
-[61, 88, false], 
-[62, 89, false], 
-[62, 90, false], 
-[97, 71, true], 
-[98, 71, false], 
-[97, 72, false], 
-[96, 72, false], 
-[96, 73, false], 
-[95, 73, false], 
-[95, 74, false], 
-[94, 74, false], 
-[94, 75, false], 
-[93, 75, false], 
-[93, 76, false], 
-[92, 77, false], 
-[92, 78, false], 
-[92, 79, false], 
-[91, 79, false], 
-[91, 80, false], 
-[91, 81, false], 
-[90, 82, false], 
-[90, 83, false], 
-[90, 84, false], 
-[89, 84, false], 
-[89, 85, false], 
-[89, 86, false], 
-[88, 87, false], 
-[87, 88, false], 
-[87, 89, false], 
-[87, 90, false], 
-[87, 91, false], 
-[86, 90, false], 
-[100, 75, true], 
-[73, 78, true], 
-[74, 78, false], 
-[75, 78, false], 
-[75, 79, false], 
-[76, 79, false], 
-[76, 80, false], 
-[77, 80, false], 
-[77, 81, false], 
-[77, 82, false], 
-[78, 83, false], 
-[78, 84, false], 
-[79, 85, false], 
-[79, 86, false], 
-[80, 87, false], 
-[80, 88, false], 
-[81, 88, false], 
-[81, 89, false], 
-[81, 90, false], 
-[82, 90, false], 
-[82, 91, false], 
-[82, 92, false], 
-[83, 92, false], 
-[83, 93, false], 
-[84, 94, false], 
-[72, 79, true], 
-[73, 79, false], 
-[72, 80, false], 
-[72, 81, false], 
-[71, 81, false], 
-[71, 82, false], 
-[71, 83, false], 
-[70, 83, false], 
-[70, 84, false], 
-[70, 85, false], 
-[69, 85, false], 
-[69, 86, false], 
-[69, 87, false], 
-[68, 87, false], 
-[68, 88, false], 
-[67, 89, false], 
-[67, 90, false], 
-[66, 91, false], 
-[66, 92, false], 
-[65, 93, false], 
-[65, 94, false], 
-[64, 94, false], 
-[63, 88, true], 
-[72, 98, true], 
-[73, 98, false], 
-[74, 98, false], 
-[75, 98, false], 
-[76, 98, false], 
-[76, 99, false], 
-[77, 99, false], 
-[77, 100, false], 
-[77, 101, false], 
-[78, 101, false], 
-[78, 102, false], 
-[78, 103, false], 
-[79, 103, false], 
-[79, 104, false], 
-[79, 105, false], 
-[80, 105, false], 
-[79, 106, false], 
-[79, 107, false], 
-[79, 108, false], 
-[79, 109, false], 
-[79, 110, false], 
-[79, 111, false], 
-[79, 112, false], 
-[78, 113, false], 
-[78, 114, false], 
-[78, 115, false], 
-[78, 116, false], 
-[78, 117, false], 
-[77, 117, false], 
-[77, 118, false], 
-[77, 119, false], 
-[77, 120, false], 
-[77, 121, false], 
-[77, 122, false], 
-[76, 122, false], 
-[76, 123, false], 
-[75, 124, false], 
-[74, 124, false], 
-[73, 124, false], 
-[73, 123, false], 
-[72, 123, false], 
-[72, 122, false], 
-[72, 121, false], 
-[71, 120, false], 
-[71, 119, false], 
-[71, 118, false], 
-[71, 117, false], 
-[71, 116, false], 
-[70, 115, false], 
-[70, 114, false], 
-[70, 113, false], 
-[70, 112, false], 
-[70, 111, false], 
-[69, 110, false], 
-[69, 109, false], 
-[69, 108, false], 
-[69, 107, false], 
-[69, 106, false], 
-[69, 105, false], 
-[69, 104, false], 
-[70, 103, false], 
-[70, 102, false], 
-[71, 101, false], 
-[71, 100, false], 
-[72, 99, false], 
-[82, 105, true], 
-[7, 142, true], 
-[142, 142, true], 
+img1.positions.add( new Position(99, 8, true)); 
+img1.positions.add( new Position(100, 8, true)); 
+img1.positions.add( new Position(101, 9, false)); 
+img1.positions.add( new Position(102, 9, false)); 
+img1.positions.add( new Position(102, 10, false)); 
+img1.positions.add( new Position(102, 11, false)); 
+img1.positions.add( new Position(102, 12, false)); 
+img1.positions.add( new Position(102, 13, false)); 
+img1.positions.add( new Position(102, 14, false)); 
+img1.positions.add( new Position(102, 15, false)); 
+img1.positions.add( new Position(102, 16, false)); 
+img1.positions.add( new Position(102, 17, false)); 
+img1.positions.add( new Position(101, 17, false)); 
+img1.positions.add( new Position(101, 18, false)); 
+img1.positions.add( new Position(101, 19, false)); 
+img1.positions.add( new Position(101, 20, false)); 
+img1.positions.add( new Position(100, 21, false)); 
+img1.positions.add( new Position(100, 22, false)); 
+img1.positions.add( new Position(99, 23, false)); 
+img1.positions.add( new Position(99, 24, false)); 
+img1.positions.add( new Position(98, 24, false)); 
+img1.positions.add( new Position(98, 25, false)); 
+img1.positions.add( new Position(98, 26, false)); 
+img1.positions.add( new Position(97, 26, false)); 
+img1.positions.add( new Position(97, 27, false)); 
+img1.positions.add( new Position(96, 27, false)); 
+img1.positions.add( new Position(96, 28, false)); 
+img1.positions.add( new Position(96, 29, false)); 
+img1.positions.add( new Position(95, 29, false)); 
+img1.positions.add( new Position(95, 30, false)); 
+img1.positions.add( new Position(94, 30, false)); 
+img1.positions.add( new Position(94, 31, false)); 
+img1.positions.add( new Position(93, 31, false)); 
+img1.positions.add( new Position(93, 32, false)); 
+img1.positions.add( new Position(92, 32, false)); 
+img1.positions.add( new Position(92, 33, false)); 
+img1.positions.add( new Position(91, 33, false)); 
+img1.positions.add( new Position(91, 34, false)); 
+img1.positions.add( new Position(90, 34, false)); 
+img1.positions.add( new Position(89, 34, false)); 
+img1.positions.add( new Position(89, 35, false)); 
+img1.positions.add( new Position(88, 35, false)); 
+img1.positions.add( new Position(88, 36, false)); 
+img1.positions.add( new Position(87, 36, false)); 
+img1.positions.add( new Position(86, 36, false)); 
+img1.positions.add( new Position(86, 37, false)); 
+img1.positions.add( new Position(85, 37, false)); 
+img1.positions.add( new Position(84, 37, false)); 
+img1.positions.add( new Position(83, 38, false)); 
+img1.positions.add( new Position(82, 38, false)); 
+img1.positions.add( new Position(81, 38, false)); 
+img1.positions.add( new Position(80, 39, false)); 
+img1.positions.add( new Position(79, 39, false)); 
+img1.positions.add( new Position(78, 39, false)); 
+img1.positions.add( new Position(77, 39, false)); 
+img1.positions.add( new Position(76, 39, false)); 
+img1.positions.add( new Position(76, 38, false)); 
+img1.positions.add( new Position(75, 38, false)); 
+img1.positions.add( new Position(75, 37, false)); 
+img1.positions.add( new Position(75, 36, false)); 
+img1.positions.add( new Position(75, 35, false)); 
+img1.positions.add( new Position(75, 34, false)); 
+img1.positions.add( new Position(75, 33, false)); 
+img1.positions.add( new Position(75, 32, false)); 
+img1.positions.add( new Position(75, 31, false)); 
+img1.positions.add( new Position(75, 30, false)); 
+img1.positions.add( new Position(76, 29, false)); 
+img1.positions.add( new Position(76, 28, false)); 
+img1.positions.add( new Position(76, 27, false)); 
+img1.positions.add( new Position(77, 27, false)); 
+img1.positions.add( new Position(77, 26, false)); 
+img1.positions.add( new Position(77, 25, false)); 
+img1.positions.add( new Position(78, 25, false)); 
+img1.positions.add( new Position(78, 24, false)); 
+img1.positions.add( new Position(78, 23, false)); 
+img1.positions.add( new Position(79, 23, false)); 
+img1.positions.add( new Position(79, 22, false)); 
+img1.positions.add( new Position(80, 21, false)); 
+img1.positions.add( new Position(80, 20, false)); 
+img1.positions.add( new Position(81, 20, false)); 
+img1.positions.add( new Position(81, 19, false)); 
+img1.positions.add( new Position(82, 19, false)); 
+img1.positions.add( new Position(82, 18, false)); 
+img1.positions.add( new Position(83, 18, false)); 
+img1.positions.add( new Position(83, 17, false)); 
+img1.positions.add( new Position(84, 17, false)); 
+img1.positions.add( new Position(84, 16, false)); 
+img1.positions.add( new Position(85, 16, false)); 
+img1.positions.add( new Position(85, 15, false)); 
+img1.positions.add( new Position(86, 15, false)); 
+img1.positions.add( new Position(86, 14, false)); 
+img1.positions.add( new Position(87, 14, false)); 
+img1.positions.add( new Position(87, 13, false)); 
+img1.positions.add( new Position(88, 13, false)); 
+img1.positions.add( new Position(89, 13, false)); 
+img1.positions.add( new Position(89, 12, false)); 
+img1.positions.add( new Position(90, 12, false)); 
+img1.positions.add( new Position(91, 11, false)); 
+img1.positions.add( new Position(92, 11, false)); 
+img1.positions.add( new Position(93, 10, false)); 
+img1.positions.add( new Position(94, 10, false)); 
+img1.positions.add( new Position(95, 10, false)); 
+img1.positions.add( new Position(95, 9, false)); 
+img1.positions.add( new Position(96, 9, false)); 
+img1.positions.add( new Position(97, 9, false)); 
+img1.positions.add( new Position(98, 9, false)); 
+img1.positions.add( new Position(97, 39, true)); 
+img1.positions.add( new Position(98, 39, true)); 
+img1.positions.add( new Position(99, 39, false)); 
+img1.positions.add( new Position(100, 39, false)); 
+img1.positions.add( new Position(101, 39, false)); 
+img1.positions.add( new Position(102, 39, false)); 
+img1.positions.add( new Position(103, 39, false)); 
+img1.positions.add( new Position(104, 40, false)); 
+img1.positions.add( new Position(105, 40, false)); 
+img1.positions.add( new Position(106, 40, false)); 
+img1.positions.add( new Position(107, 40, false)); 
+img1.positions.add( new Position(108, 40, false)); 
+img1.positions.add( new Position(109, 41, false)); 
+img1.positions.add( new Position(110, 41, false)); 
+img1.positions.add( new Position(111, 41, false)); 
+img1.positions.add( new Position(112, 41, false)); 
+img1.positions.add( new Position(112, 42, false)); 
+img1.positions.add( new Position(113, 42, false)); 
+img1.positions.add( new Position(114, 42, false)); 
+img1.positions.add( new Position(115, 43, false)); 
+img1.positions.add( new Position(116, 43, false)); 
+img1.positions.add( new Position(117, 44, false)); 
+img1.positions.add( new Position(118, 44, false)); 
+img1.positions.add( new Position(118, 45, false)); 
+img1.positions.add( new Position(119, 45, false)); 
+img1.positions.add( new Position(120, 45, false)); 
+img1.positions.add( new Position(120, 46, false)); 
+img1.positions.add( new Position(121, 46, false)); 
+img1.positions.add( new Position(121, 47, false)); 
+img1.positions.add( new Position(122, 47, false)); 
+img1.positions.add( new Position(122, 48, false)); 
+img1.positions.add( new Position(123, 48, false)); 
+img1.positions.add( new Position(123, 49, false)); 
+img1.positions.add( new Position(124, 49, false)); 
+img1.positions.add( new Position(124, 50, false)); 
+img1.positions.add( new Position(125, 50, false)); 
+img1.positions.add( new Position(125, 51, false)); 
+img1.positions.add( new Position(125, 52, false)); 
+img1.positions.add( new Position(125, 53, false)); 
+img1.positions.add( new Position(125, 54, false)); 
+img1.positions.add( new Position(124, 54, false)); 
+img1.positions.add( new Position(124, 55, false)); 
+img1.positions.add( new Position(123, 55, false)); 
+img1.positions.add( new Position(123, 56, false)); 
+img1.positions.add( new Position(122, 56, false)); 
+img1.positions.add( new Position(121, 57, false)); 
+img1.positions.add( new Position(120, 57, false)); 
+img1.positions.add( new Position(120, 58, false)); 
+img1.positions.add( new Position(119, 58, false)); 
+img1.positions.add( new Position(119, 59, false)); 
+img1.positions.add( new Position(118, 60, false)); 
+img1.positions.add( new Position(118, 61, false)); 
+img1.positions.add( new Position(117, 61, false)); 
+img1.positions.add( new Position(117, 62, false)); 
+img1.positions.add( new Position(116, 62, false)); 
+img1.positions.add( new Position(116, 63, false)); 
+img1.positions.add( new Position(116, 64, false)); 
+img1.positions.add( new Position(115, 64, false)); 
+img1.positions.add( new Position(115, 65, false)); 
+img1.positions.add( new Position(114, 66, false)); 
+img1.positions.add( new Position(114, 67, false)); 
+img1.positions.add( new Position(114, 68, false)); 
+img1.positions.add( new Position(113, 68, false)); 
+img1.positions.add( new Position(113, 69, false)); 
+img1.positions.add( new Position(113, 70, false)); 
+img1.positions.add( new Position(113, 71, false)); 
+img1.positions.add( new Position(113, 72, false)); 
+img1.positions.add( new Position(112, 73, false)); 
+img1.positions.add( new Position(112, 74, false)); 
+img1.positions.add( new Position(112, 75, false)); 
+img1.positions.add( new Position(112, 76, false)); 
+img1.positions.add( new Position(112, 77, false)); 
+img1.positions.add( new Position(112, 78, false)); 
+img1.positions.add( new Position(112, 79, false)); 
+img1.positions.add( new Position(112, 80, false)); 
+img1.positions.add( new Position(112, 81, false)); 
+img1.positions.add( new Position(112, 82, false)); 
+img1.positions.add( new Position(112, 83, false)); 
+img1.positions.add( new Position(113, 83, false)); 
+img1.positions.add( new Position(113, 84, false)); 
+img1.positions.add( new Position(113, 85, false)); 
+img1.positions.add( new Position(113, 86, false)); 
+img1.positions.add( new Position(113, 87, false)); 
+img1.positions.add( new Position(114, 88, false)); 
+img1.positions.add( new Position(114, 89, false)); 
+img1.positions.add( new Position(114, 90, false)); 
+img1.positions.add( new Position(115, 90, false)); 
+img1.positions.add( new Position(115, 91, false)); 
+img1.positions.add( new Position(115, 92, false)); 
+img1.positions.add( new Position(116, 92, false)); 
+img1.positions.add( new Position(116, 93, false)); 
+img1.positions.add( new Position(117, 94, false)); 
+img1.positions.add( new Position(117, 95, false)); 
+img1.positions.add( new Position(118, 95, false)); 
+img1.positions.add( new Position(118, 96, false)); 
+img1.positions.add( new Position(119, 96, false)); 
+img1.positions.add( new Position(119, 97, false)); 
+img1.positions.add( new Position(120, 97, false)); 
+img1.positions.add( new Position(120, 98, false)); 
+img1.positions.add( new Position(121, 98, false)); 
+img1.positions.add( new Position(121, 99, false)); 
+img1.positions.add( new Position(122, 99, false)); 
+img1.positions.add( new Position(122, 100, false)); 
+img1.positions.add( new Position(123, 100, false)); 
+img1.positions.add( new Position(123, 101, false)); 
+img1.positions.add( new Position(124, 101, false)); 
+img1.positions.add( new Position(124, 102, false)); 
+img1.positions.add( new Position(125, 102, false)); 
+img1.positions.add( new Position(126, 103, false)); 
+img1.positions.add( new Position(127, 103, false)); 
+img1.positions.add( new Position(127, 104, false)); 
+img1.positions.add( new Position(128, 104, false)); 
+img1.positions.add( new Position(128, 105, false)); 
+img1.positions.add( new Position(129, 105, false)); 
+img1.positions.add( new Position(129, 106, false)); 
+img1.positions.add( new Position(129, 107, false)); 
+img1.positions.add( new Position(129, 108, false)); 
+img1.positions.add( new Position(129, 109, false)); 
+img1.positions.add( new Position(128, 110, false)); 
+img1.positions.add( new Position(128, 111, false)); 
+img1.positions.add( new Position(128, 112, false)); 
+img1.positions.add( new Position(127, 112, false)); 
+img1.positions.add( new Position(127, 113, false)); 
+img1.positions.add( new Position(127, 114, false)); 
+img1.positions.add( new Position(126, 114, false)); 
+img1.positions.add( new Position(126, 115, false)); 
+img1.positions.add( new Position(126, 116, false)); 
+img1.positions.add( new Position(125, 116, false)); 
+img1.positions.add( new Position(125, 117, false)); 
+img1.positions.add( new Position(125, 118, false)); 
+img1.positions.add( new Position(124, 118, false)); 
+img1.positions.add( new Position(124, 119, false)); 
+img1.positions.add( new Position(124, 120, false)); 
+img1.positions.add( new Position(123, 120, false)); 
+img1.positions.add( new Position(123, 121, false)); 
+img1.positions.add( new Position(122, 122, false)); 
+img1.positions.add( new Position(122, 123, false)); 
+img1.positions.add( new Position(121, 123, false)); 
+img1.positions.add( new Position(121, 124, false)); 
+img1.positions.add( new Position(120, 125, false)); 
+img1.positions.add( new Position(120, 126, false)); 
+img1.positions.add( new Position(119, 126, false)); 
+img1.positions.add( new Position(119, 127, false)); 
+img1.positions.add( new Position(118, 127, false)); 
+img1.positions.add( new Position(118, 128, false)); 
+img1.positions.add( new Position(117, 129, false)); 
+img1.positions.add( new Position(117, 130, false)); 
+img1.positions.add( new Position(116, 130, false)); 
+img1.positions.add( new Position(116, 131, false)); 
+img1.positions.add( new Position(115, 131, false)); 
+img1.positions.add( new Position(115, 132, false)); 
+img1.positions.add( new Position(114, 132, false)); 
+img1.positions.add( new Position(114, 133, false)); 
+img1.positions.add( new Position(113, 133, false)); 
+img1.positions.add( new Position(113, 134, false)); 
+img1.positions.add( new Position(112, 134, false)); 
+img1.positions.add( new Position(112, 135, false)); 
+img1.positions.add( new Position(111, 135, false)); 
+img1.positions.add( new Position(111, 136, false)); 
+img1.positions.add( new Position(110, 136, false)); 
+img1.positions.add( new Position(110, 137, false)); 
+img1.positions.add( new Position(109, 137, false)); 
+img1.positions.add( new Position(108, 137, false)); 
+img1.positions.add( new Position(108, 138, false)); 
+img1.positions.add( new Position(107, 138, false)); 
+img1.positions.add( new Position(106, 139, false)); 
+img1.positions.add( new Position(105, 139, false)); 
+img1.positions.add( new Position(104, 140, false)); 
+img1.positions.add( new Position(103, 140, false)); 
+img1.positions.add( new Position(102, 140, false)); 
+img1.positions.add( new Position(101, 140, false)); 
+img1.positions.add( new Position(100, 140, false)); 
+img1.positions.add( new Position(99, 140, false)); 
+img1.positions.add( new Position(98, 140, false)); 
+img1.positions.add( new Position(97, 140, false)); 
+img1.positions.add( new Position(96, 140, false)); 
+img1.positions.add( new Position(95, 140, false)); 
+img1.positions.add( new Position(94, 139, false)); 
+img1.positions.add( new Position(93, 139, false)); 
+img1.positions.add( new Position(92, 139, false)); 
+img1.positions.add( new Position(91, 139, false)); 
+img1.positions.add( new Position(91, 138, false)); 
+img1.positions.add( new Position(90, 138, false)); 
+img1.positions.add( new Position(89, 138, false)); 
+img1.positions.add( new Position(88, 137, false)); 
+img1.positions.add( new Position(87, 137, false)); 
+img1.positions.add( new Position(86, 137, false)); 
+img1.positions.add( new Position(85, 136, false)); 
+img1.positions.add( new Position(84, 136, false)); 
+img1.positions.add( new Position(83, 136, false)); 
+img1.positions.add( new Position(82, 136, false)); 
+img1.positions.add( new Position(81, 136, false)); 
+img1.positions.add( new Position(80, 135, false)); 
+img1.positions.add( new Position(79, 135, false)); 
+img1.positions.add( new Position(78, 135, false)); 
+img1.positions.add( new Position(77, 135, false)); 
+img1.positions.add( new Position(76, 135, false)); 
+img1.positions.add( new Position(75, 135, false)); 
+img1.positions.add( new Position(74, 135, false)); 
+img1.positions.add( new Position(73, 136, false)); 
+img1.positions.add( new Position(72, 136, false)); 
+img1.positions.add( new Position(71, 136, false)); 
+img1.positions.add( new Position(70, 136, false)); 
+img1.positions.add( new Position(69, 136, false)); 
+img1.positions.add( new Position(69, 137, false)); 
+img1.positions.add( new Position(68, 137, false)); 
+img1.positions.add( new Position(67, 137, false)); 
+img1.positions.add( new Position(66, 137, false)); 
+img1.positions.add( new Position(66, 138, false)); 
+img1.positions.add( new Position(65, 138, false)); 
+img1.positions.add( new Position(64, 138, false)); 
+img1.positions.add( new Position(63, 138, false)); 
+img1.positions.add( new Position(63, 139, false)); 
+img1.positions.add( new Position(62, 139, false)); 
+img1.positions.add( new Position(61, 139, false)); 
+img1.positions.add( new Position(60, 139, false)); 
+img1.positions.add( new Position(60, 140, false)); 
+img1.positions.add( new Position(59, 140, false)); 
+img1.positions.add( new Position(58, 140, false)); 
+img1.positions.add( new Position(57, 140, false)); 
+img1.positions.add( new Position(56, 140, false)); 
+img1.positions.add( new Position(55, 140, false)); 
+img1.positions.add( new Position(54, 140, false)); 
+img1.positions.add( new Position(53, 140, false)); 
+img1.positions.add( new Position(52, 140, false)); 
+img1.positions.add( new Position(51, 140, false)); 
+img1.positions.add( new Position(50, 140, false)); 
+img1.positions.add( new Position(49, 139, false)); 
+img1.positions.add( new Position(48, 139, false)); 
+img1.positions.add( new Position(47, 138, false)); 
+img1.positions.add( new Position(46, 138, false)); 
+img1.positions.add( new Position(46, 137, false)); 
+img1.positions.add( new Position(45, 137, false)); 
+img1.positions.add( new Position(44, 137, false)); 
+img1.positions.add( new Position(44, 136, false)); 
+img1.positions.add( new Position(43, 136, false)); 
+img1.positions.add( new Position(43, 135, false)); 
+img1.positions.add( new Position(42, 135, false)); 
+img1.positions.add( new Position(42, 134, false)); 
+img1.positions.add( new Position(41, 134, false)); 
+img1.positions.add( new Position(41, 133, false)); 
+img1.positions.add( new Position(40, 133, false)); 
+img1.positions.add( new Position(40, 132, false)); 
+img1.positions.add( new Position(39, 132, false)); 
+img1.positions.add( new Position(39, 131, false)); 
+img1.positions.add( new Position(38, 131, false)); 
+img1.positions.add( new Position(38, 130, false)); 
+img1.positions.add( new Position(37, 129, false)); 
+img1.positions.add( new Position(37, 128, false)); 
+img1.positions.add( new Position(36, 128, false)); 
+img1.positions.add( new Position(36, 127, false)); 
+img1.positions.add( new Position(35, 127, false)); 
+img1.positions.add( new Position(35, 126, false)); 
+img1.positions.add( new Position(34, 126, false)); 
+img1.positions.add( new Position(34, 125, false)); 
+img1.positions.add( new Position(34, 124, false)); 
+img1.positions.add( new Position(33, 124, false)); 
+img1.positions.add( new Position(33, 123, false)); 
+img1.positions.add( new Position(32, 123, false)); 
+img1.positions.add( new Position(32, 122, false)); 
+img1.positions.add( new Position(32, 121, false)); 
+img1.positions.add( new Position(31, 121, false)); 
+img1.positions.add( new Position(31, 120, false)); 
+img1.positions.add( new Position(30, 120, false)); 
+img1.positions.add( new Position(30, 119, false)); 
+img1.positions.add( new Position(30, 118, false)); 
+img1.positions.add( new Position(29, 118, false)); 
+img1.positions.add( new Position(29, 117, false)); 
+img1.positions.add( new Position(29, 116, false)); 
+img1.positions.add( new Position(28, 116, false)); 
+img1.positions.add( new Position(28, 115, false)); 
+img1.positions.add( new Position(28, 114, false)); 
+img1.positions.add( new Position(27, 114, false)); 
+img1.positions.add( new Position(27, 113, false)); 
+img1.positions.add( new Position(27, 112, false)); 
+img1.positions.add( new Position(26, 112, false)); 
+img1.positions.add( new Position(26, 111, false)); 
+img1.positions.add( new Position(26, 110, false)); 
+img1.positions.add( new Position(25, 110, false)); 
+img1.positions.add( new Position(25, 109, false)); 
+img1.positions.add( new Position(25, 108, false)); 
+img1.positions.add( new Position(24, 107, false)); 
+img1.positions.add( new Position(24, 106, false)); 
+img1.positions.add( new Position(24, 105, false)); 
+img1.positions.add( new Position(23, 105, false)); 
+img1.positions.add( new Position(23, 104, false)); 
+img1.positions.add( new Position(23, 103, false)); 
+img1.positions.add( new Position(23, 102, false)); 
+img1.positions.add( new Position(22, 102, false)); 
+img1.positions.add( new Position(22, 101, false)); 
+img1.positions.add( new Position(22, 100, false)); 
+img1.positions.add( new Position(22, 99, false)); 
+img1.positions.add( new Position(21, 99, false)); 
+img1.positions.add( new Position(21, 98, false)); 
+img1.positions.add( new Position(21, 97, false)); 
+img1.positions.add( new Position(21, 96, false)); 
+img1.positions.add( new Position(21, 95, false)); 
+img1.positions.add( new Position(20, 95, false)); 
+img1.positions.add( new Position(20, 94, false)); 
+img1.positions.add( new Position(20, 93, false)); 
+img1.positions.add( new Position(20, 92, false)); 
+img1.positions.add( new Position(20, 91, false)); 
+img1.positions.add( new Position(20, 90, false)); 
+img1.positions.add( new Position(19, 90, false)); 
+img1.positions.add( new Position(19, 89, false)); 
+img1.positions.add( new Position(19, 88, false)); 
+img1.positions.add( new Position(19, 87, false)); 
+img1.positions.add( new Position(19, 86, false)); 
+img1.positions.add( new Position(19, 85, false)); 
+img1.positions.add( new Position(19, 84, false)); 
+img1.positions.add( new Position(19, 83, false)); 
+img1.positions.add( new Position(19, 82, false)); 
+img1.positions.add( new Position(19, 81, false)); 
+img1.positions.add( new Position(19, 80, false)); 
+img1.positions.add( new Position(19, 79, false)); 
+img1.positions.add( new Position(19, 78, false)); 
+img1.positions.add( new Position(19, 77, false)); 
+img1.positions.add( new Position(19, 76, false)); 
+img1.positions.add( new Position(19, 75, false)); 
+img1.positions.add( new Position(19, 74, false)); 
+img1.positions.add( new Position(19, 73, false)); 
+img1.positions.add( new Position(19, 72, false)); 
+img1.positions.add( new Position(19, 71, false)); 
+img1.positions.add( new Position(19, 70, false)); 
+img1.positions.add( new Position(20, 69, false)); 
+img1.positions.add( new Position(20, 68, false)); 
+img1.positions.add( new Position(20, 67, false)); 
+img1.positions.add( new Position(20, 66, false)); 
+img1.positions.add( new Position(21, 65, false)); 
+img1.positions.add( new Position(21, 64, false)); 
+img1.positions.add( new Position(21, 63, false)); 
+img1.positions.add( new Position(22, 62, false)); 
+img1.positions.add( new Position(22, 61, false)); 
+img1.positions.add( new Position(22, 60, false)); 
+img1.positions.add( new Position(23, 60, false)); 
+img1.positions.add( new Position(23, 59, false)); 
+img1.positions.add( new Position(23, 58, false)); 
+img1.positions.add( new Position(24, 58, false)); 
+img1.positions.add( new Position(24, 57, false)); 
+img1.positions.add( new Position(25, 56, false)); 
+img1.positions.add( new Position(25, 55, false)); 
+img1.positions.add( new Position(26, 55, false)); 
+img1.positions.add( new Position(26, 54, false)); 
+img1.positions.add( new Position(27, 53, false)); 
+img1.positions.add( new Position(27, 52, false)); 
+img1.positions.add( new Position(28, 52, false)); 
+img1.positions.add( new Position(28, 51, false)); 
+img1.positions.add( new Position(29, 51, false)); 
+img1.positions.add( new Position(29, 50, false)); 
+img1.positions.add( new Position(30, 50, false)); 
+img1.positions.add( new Position(30, 49, false)); 
+img1.positions.add( new Position(31, 49, false)); 
+img1.positions.add( new Position(31, 48, false)); 
+img1.positions.add( new Position(32, 48, false)); 
+img1.positions.add( new Position(32, 47, false)); 
+img1.positions.add( new Position(33, 47, false)); 
+img1.positions.add( new Position(33, 46, false)); 
+img1.positions.add( new Position(34, 46, false)); 
+img1.positions.add( new Position(35, 46, false)); 
+img1.positions.add( new Position(35, 45, false)); 
+img1.positions.add( new Position(36, 45, false)); 
+img1.positions.add( new Position(36, 44, false)); 
+img1.positions.add( new Position(37, 44, false)); 
+img1.positions.add( new Position(38, 44, false)); 
+img1.positions.add( new Position(38, 43, false)); 
+img1.positions.add( new Position(39, 43, false)); 
+img1.positions.add( new Position(40, 43, false)); 
+img1.positions.add( new Position(40, 42, false)); 
+img1.positions.add( new Position(41, 42, false)); 
+img1.positions.add( new Position(42, 42, false)); 
+img1.positions.add( new Position(43, 41, false)); 
+img1.positions.add( new Position(44, 41, false)); 
+img1.positions.add( new Position(45, 41, false)); 
+img1.positions.add( new Position(46, 41, false)); 
+img1.positions.add( new Position(46, 40, false)); 
+img1.positions.add( new Position(47, 40, false)); 
+img1.positions.add( new Position(48, 40, false)); 
+img1.positions.add( new Position(49, 40, false)); 
+img1.positions.add( new Position(50, 40, false)); 
+img1.positions.add( new Position(51, 40, false)); 
+img1.positions.add( new Position(52, 40, false)); 
+img1.positions.add( new Position(53, 40, false)); 
+img1.positions.add( new Position(54, 40, false)); 
+img1.positions.add( new Position(55, 40, false)); 
+img1.positions.add( new Position(56, 40, false)); 
+img1.positions.add( new Position(57, 40, false)); 
+img1.positions.add( new Position(58, 40, false)); 
+img1.positions.add( new Position(59, 41, false)); 
+img1.positions.add( new Position(60, 41, false)); 
+img1.positions.add( new Position(61, 41, false)); 
+img1.positions.add( new Position(62, 41, false)); 
+img1.positions.add( new Position(63, 42, false)); 
+img1.positions.add( new Position(64, 42, false)); 
+img1.positions.add( new Position(65, 42, false)); 
+img1.positions.add( new Position(66, 43, false)); 
+img1.positions.add( new Position(67, 43, false)); 
+img1.positions.add( new Position(68, 43, false)); 
+img1.positions.add( new Position(68, 44, false)); 
+img1.positions.add( new Position(69, 44, false)); 
+img1.positions.add( new Position(70, 44, false)); 
+img1.positions.add( new Position(71, 44, false)); 
+img1.positions.add( new Position(71, 45, false)); 
+img1.positions.add( new Position(72, 45, false)); 
+img1.positions.add( new Position(73, 45, false)); 
+img1.positions.add( new Position(74, 45, false)); 
+img1.positions.add( new Position(75, 45, false)); 
+img1.positions.add( new Position(76, 45, false)); 
+img1.positions.add( new Position(77, 45, false)); 
+img1.positions.add( new Position(78, 45, false)); 
+img1.positions.add( new Position(79, 45, false)); 
+img1.positions.add( new Position(80, 45, false)); 
+img1.positions.add( new Position(80, 44, false)); 
+img1.positions.add( new Position(81, 44, false)); 
+img1.positions.add( new Position(82, 44, false)); 
+img1.positions.add( new Position(83, 44, false)); 
+img1.positions.add( new Position(83, 43, false)); 
+img1.positions.add( new Position(84, 43, false)); 
+img1.positions.add( new Position(85, 43, false)); 
+img1.positions.add( new Position(86, 43, false)); 
+img1.positions.add( new Position(86, 42, false)); 
+img1.positions.add( new Position(87, 42, false)); 
+img1.positions.add( new Position(88, 42, false)); 
+img1.positions.add( new Position(89, 41, false)); 
+img1.positions.add( new Position(90, 41, false)); 
+img1.positions.add( new Position(91, 41, false)); 
+img1.positions.add( new Position(92, 40, false)); 
+img1.positions.add( new Position(93, 40, false)); 
+img1.positions.add( new Position(94, 40, false)); 
+img1.positions.add( new Position(95, 40, false)); 
+img1.positions.add( new Position(96, 40, false)); 
