@@ -11,7 +11,7 @@ public class tmp {
     public static void main(String[] args) throws IOException {
         
         ImageService img1 = new ImageService();
-		img1.load(ImageIO.read(new File("src/graphics/apple_logo.png")));
+		img1.load(ImageIO.read(new File("src/graphics/2070_tycoon_logo_150.png")));
 		img1.verify();
 		img1.canny();
 		img1.positionCreator();

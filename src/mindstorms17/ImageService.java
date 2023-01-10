@@ -83,8 +83,9 @@ public class ImageService {
 
         int HEIGHT = img.getHeight();
         int WIDTH = img.getWidth();
-        ArrayList<Position> positionList = new ArrayList<>();
+        //ArrayList<Position> positionList = new ArrayList<>();
         boolean noEndFound = true;
+        boolean endOfPixelsReached = false;
         int i = 0;
         boolean headSwitchNow = false;
         int arraySizeLimiter = 0;
@@ -98,28 +99,29 @@ public class ImageService {
                 // found first node
                 if (img.getRGB(x, y) == BLACK) {
                     noEndFound = true;
+                    endOfPixelsReached = false;
                     headSwitchNow = true;
                     // System.out.println("found start at: " + x+", "+y);
-                    positionList.add(new Position(x, y, true, true));
+                    this.positions.add(new Position(x, y, true));
 
                     //replace the head before this object
                     
 
                     System.out.println("a new beginning?");
-                    img.setRGB(x, y, WHITE);
+                    //img.setRGB(x, y, WHITE); //TODO: do not remove the start to allow end-connecting
                     current_pos[0] = x;
                     current_pos[1] = y;
 
                     //the fist one shall be headSwitch=true to move the head down again
-                   for(int r = 0; r < 1000; r++) { // search until no black neighbors
-                        arraySizeLimiter = positionList.size();
+                   while(!endOfPixelsReached) { // search until no black neighbors
+                        arraySizeLimiter = this.positions.size();
                         // loop over all neighbors
                         for (i = 0; i < looper.length; i += 2) {
                             current_checking_pos[0] = current_pos[0] + looper[i];
                             current_checking_pos[1] = current_pos[1] + looper[i + 1];
 
                             if (img.getRGB(current_checking_pos[0], current_checking_pos[1]) == BLACK) {
-                                positionList.add(new Position(current_checking_pos[0], current_checking_pos[1], headSwitchNow, true));
+                                this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], headSwitchNow));
                                 headSwitchNow = false; // first call will set it true
                                 img.setRGB(current_checking_pos[0], current_checking_pos[1], WHITE);
                                 current_pos[0] = current_checking_pos[0];
@@ -130,8 +132,9 @@ public class ImageService {
                             
                         }
                         //System.out.println(positionList.size());
-                        if(arraySizeLimiter == positionList.size()){
-                            break; //exchange with while loop
+                        if(arraySizeLimiter == this.positions.size()){
+                            endOfPixelsReached = true;
+                            //break; //exchange with while loop
                         }
 
                        /*  if(i == 14){//if i'm here and i == 14 (len-2); i checked the last looper and found no neighbor
@@ -152,20 +155,22 @@ public class ImageService {
             }
 
         }
-        this.positions = positionList;
+        //the last element shall be headSwitch=true
+        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));  
+        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));                  
 
     }
 
     void exportPositions() throws IOException {
 
-        PrintWriter f0 = new PrintWriter(new FileWriter("output.txt"));
+        PrintWriter f0 = new PrintWriter(new FileWriter("output2.txt"));
 
         // fix stuff
         for (Position b : this.positions) {
 
             // f0.println("["+b.x + ", " + b.y + ", " + b.headSwitch+"], ");
-            //f0.println("img1.positions.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
-            f0.println("posList.append( (" + b.x + ", " + b.y +") )");
+            f0.println("img1.positions.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
+            //f0.println("posList.append( (" + b.x + ", " + b.y +") )");
 
         }
         f0.close();

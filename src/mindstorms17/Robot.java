@@ -39,13 +39,26 @@ public class Robot {
         this.thresholdY = 0;
     }
 
+    //TODO: wrong naming, headUp seems like moving up, but in reality it switches it
     void headUp() {
-        headMotor.rotate(180);
-        Delay.msDelay(10);
+        if(!headPos){
+            headMotor.rotate(180);
+            this.headPos = !this.headPos;
+            Delay.msDelay(10);
+        }
+    }
+
+    void headDown() {
+        if(headPos){
+            headMotor.rotate(180);
+            this.headPos = !this.headPos;
+            Delay.msDelay(10);
+        }
     }
 
     void headSwitch() {
         headMotor.rotate(180);
+        this.headPos = !this.headPos;
         Delay.msDelay(10);
     }
 
@@ -168,9 +181,13 @@ public class Robot {
         this.wheelMotor.waitComplete();
     }
 
-    void driveToHome() {
+    void driveToHome(boolean currentHeadPos) {
         // what happens: first drive the head to touchSensor, THEN drive the paper to
         // the lightSensor
+        if(currentHeadPos){ //headpos is down
+            headUp();
+        }
+
         SensorMode sensorMode = this.touchSensor.getTouchMode();
         RegulatedMotor m = this.chainMotor;
         m.setSpeed(20);
@@ -197,35 +214,7 @@ public class Robot {
         }
         // TODO: technical difference between Thread.sleep and Delay.msDelay
         // sensor.close();
-    }
-
-    void moveCm(int x, int y) {
-
-        x = x * 9; // 8.925619834710744
-        y = y * 8; // 7.957747309102483
-
-        this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
-        this.chainMotor.startSynchronization();
-        this.chainMotor.setSpeed((int) 100); // TODO: how does speed affect the outcome. what is speed?
-        this.wheelMotor.setSpeed((int) 100);
-        this.chainMotor.rotate((int) x); // WARNING: conversion to int
-        this.wheelMotor.rotate((int) y);
-        // Delay.msDelay( (long) timeForLength*1000);
-        this.chainMotor.endSynchronization();
-        this.chainMotor.waitComplete();
-        this.wheelMotor.waitComplete();
-    }
-
-    void printIntArray(ArrayList<int[]> a) {
-
-        for (int i = 0; i < a.size() - 1; i++) {
-
-            move(
-                    a.get(i + 1)[0] - a.get(i)[0],
-                    a.get(i + 1)[1] - a.get(i)[1]);
-
-        }
-
+        headDown();
     }
 
 }
