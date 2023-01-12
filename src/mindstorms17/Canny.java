@@ -15,7 +15,7 @@ public class Canny {
 
     public static void main(String[] args) throws IOException {
         
-        final String fileName = "2070_tycoon_logo_150";
+        final String fileName = "tony_helmet";
         final String fileType = "png";
 
         BufferedImage in = ImageIO.read(new File("src/graphics/"+fileName+"."+fileType));

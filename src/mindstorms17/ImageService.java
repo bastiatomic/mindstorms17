@@ -107,7 +107,6 @@ public class ImageService {
                     //replace the head before this object
                     
 
-                    System.out.println("a new beginning?");
                     //img.setRGB(x, y, WHITE); //TODO: do not remove the start to allow end-connecting
                     current_pos[0] = x;
                     current_pos[1] = y;
@@ -163,16 +162,19 @@ public class ImageService {
 
     void exportPositions() throws IOException {
 
-        PrintWriter f0 = new PrintWriter(new FileWriter("output2.txt"));
+        PrintWriter f0 = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
+
+        f0.write("package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> write(){ArrayList<Position> a = new ArrayList<>();");
 
         // fix stuff
-        for (Position b : this.positions) {
+        for (Position b : this.positions) {;
 
             // f0.println("["+b.x + ", " + b.y + ", " + b.headSwitch+"], ");
-            f0.println("img1.positions.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
+            f0.println("a.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
             //f0.println("posList.append( (" + b.x + ", " + b.y +") )");
 
         }
+        f0.write("return a;}} ");
         f0.close();
     }
 
