@@ -22,9 +22,10 @@ public class Gear {
         double gearAxis = 36.0;
         double gearMotor = 12.0;
         double wheelScope = 121.0;
+        double motorMoveDirection = 1;
 
         double shift = gearMotor / gearAxis;
-        double outputOneDegreeMotor = (wheelScope / 360) * shift;
+        double outputOneDegreeMotor = (wheelScope / 360) * shift * motorMoveDirection;
 
         return outputOneDegreeMotor;
     }
@@ -33,9 +34,10 @@ public class Gear {
         double gearAxis = 36.0;
         double gearMotor = 12.0;
         double wheelScope = 135.7168;
+        double motorMoveDirection = 1;
 
         double shift = gearMotor / gearAxis;
-        double outputOneDegreeMotor = (wheelScope / 360) * shift;
+        double outputOneDegreeMotor = (wheelScope / 360) * shift * motorMoveDirection;
 
         return outputOneDegreeMotor;
     }

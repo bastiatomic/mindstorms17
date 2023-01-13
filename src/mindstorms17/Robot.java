@@ -21,7 +21,7 @@ public class Robot {
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
 
-    Robot(int a, int b, Boolean c,
+    public Robot(int a, int b, Boolean c,
             RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
         this.exactPosX = a;
         this.exactPosY = a;
@@ -39,14 +39,6 @@ public class Robot {
 
     //TODO: wrong naming, headUp seems like moving up, but in reality it switches it
     void headUp() {
-        if(!headPos){
-            headMotor.rotate(180);
-            this.headPos = !this.headPos;
-            Delay.msDelay(10);
-        }
-    }
-
-    void headDown() {
         if(headPos){
             headMotor.rotate(180);
             this.headPos = !this.headPos;
@@ -54,7 +46,15 @@ public class Robot {
         }
     }
 
-    void headSwitch() {
+    void headDown() {
+        if(!headPos){
+            headMotor.rotate(180);
+            this.headPos = !this.headPos;
+            Delay.msDelay(10);
+        }
+    }
+
+    public void headSwitch() {
         headMotor.rotate(180);
         this.headPos = !this.headPos;
         Delay.msDelay(10);
@@ -198,7 +198,7 @@ public class Robot {
         }
         m.stop();
 
-        Delay.msDelay(2000);
+        Delay.msDelay(10);
         this.wheelMotor.setSpeed(50);
         SensorMode ambientSensorMode = this.colorSensor.getRedMode();
         float[] sample1 = new float[ambientSensorMode.sampleSize()];

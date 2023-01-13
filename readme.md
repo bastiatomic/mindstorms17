@@ -1,3 +1,3 @@
-reason 1749 for whatever you know it
+this project uses a Lego Plott3r with LeJos (Java) to print an image.
 
-this repo provides classes for the LeJos project. It aims at creating an all-in-one solution to print stuff with it
+To start the application, place an image in the 'graphics' folder and execute the 'App.java'.

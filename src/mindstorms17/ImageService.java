@@ -53,18 +53,8 @@ public class ImageService {
          */
         int WHITE = new Color(255, 255, 255).getRGB();
         int BLACK = new Color(20, 20, 20).getRGB(); // or 20,20,20
-        int RED = new Color(255, 0, 0).getRGB();
-        int[] looper8_round = { // TODO: check adjacent first and then diagonal to prevent misuse
-                -1, 0, // left
-                -1, -1, // topleft
-                0, -1, // top
-                1, -1, // topright
-                1, 0, // right
-                1, 1, // bottomright
-                0, 1, // bottom
-                -1, 1 // bottomleft
-        };
-        int[] looper8_adjacentFirst = { // TODO: check adjacent first and then diagonal to prevent misuse
+ 
+        int[] looper = { // TODO: check adjacent first and then diagonal to prevent misuse
                 0, -1, // top
                 1, 0, // right
                 0, 1, // bottom
@@ -74,17 +64,11 @@ public class ImageService {
                 1, 1, // bottomright
                 -1, 1 // bottomleft
         };
-
-        int[] looper = looper8_adjacentFirst;
-        // static int[] looper4 ={0, -1,1, 0,0, 1, -1, 0};
 
         // I NEED A CANNY IMAGE
-        BufferedImage img = this.img_canny;
-
+        BufferedImage img = this.img_canny; //TODO: extract me
         int HEIGHT = img.getHeight();
         int WIDTH = img.getWidth();
-        //ArrayList<Position> positionList = new ArrayList<>();
-        boolean noEndFound = true;
         boolean endOfPixelsReached = false;
         int i = 0;
         boolean headSwitchNow = false;
@@ -92,60 +76,57 @@ public class ImageService {
 
         int[] current_pos = { 0, 0 };
         int[] current_checking_pos = { 0, 0 };
+        int pathLength = 0;
 
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
 
                 // found first node
                 if (img.getRGB(x, y) == BLACK) {
-                    noEndFound = true;
                     endOfPixelsReached = false;
                     headSwitchNow = true;
                     // System.out.println("found start at: " + x+", "+y);
                     this.positions.add(new Position(x, y, true));
+                    //System.out.println("found start");
+                    pathLength = 0;
 
-                    //replace the head before this object
-                    
-
-                    //img.setRGB(x, y, WHITE); //TODO: do not remove the start to allow end-connecting
                     current_pos[0] = x;
                     current_pos[1] = y;
 
-                    //the fist one shall be headSwitch=true to move the head down again
-                   while(!endOfPixelsReached) { // search until no black neighbors
+                    // the fist one shall be headSwitch=true to move the head down again
+                    while (!endOfPixelsReached) { // search until no black neighbors
                         arraySizeLimiter = this.positions.size();
+                        pathLength++;
                         // loop over all neighbors
+
                         for (i = 0; i < looper.length; i += 2) {
                             current_checking_pos[0] = current_pos[0] + looper[i];
                             current_checking_pos[1] = current_pos[1] + looper[i + 1];
 
                             if (img.getRGB(current_checking_pos[0], current_checking_pos[1]) == BLACK) {
-                                this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], headSwitchNow));
+                                this.positions.add(
+                                        new Position(current_checking_pos[0], current_checking_pos[1], headSwitchNow));
                                 headSwitchNow = false; // first call will set it true
                                 img.setRGB(current_checking_pos[0], current_checking_pos[1], WHITE);
                                 current_pos[0] = current_checking_pos[0];
                                 current_pos[1] = current_checking_pos[1];
+                                //System.out.println("found neighbor");
                                 break;
-
                             }
-                            
-                        }
-                        //System.out.println(positionList.size());
-                        if(arraySizeLimiter == this.positions.size()){
-                            endOfPixelsReached = true;
-                            //break; //exchange with while loop
+
                         }
 
-                       /*  if(i == 14){//if i'm here and i == 14 (len-2); i checked the last looper and found no neighbor
-                            positionList.add(new Position(current_checking_pos[0], current_checking_pos[1], true, false));
-                            noEndFound = false;*/
-                        //}
-                        //TODO: the first shall be headSwitch=True
-                        //TODO: the last element is a duplicate and the headSwitch=True by last one
-                        //TODO: check if size of positionList is different from last call
-                        //technically no more pixels.
-                        //positionList.add(new Position(current_checking_pos[0], current_checking_pos[1], true, false));
-                        //noEndFound = false; // this will continue the WIDTH-HEIGHT-loop
+                        // end of current "black line" reached
+                        if (arraySizeLimiter == this.positions.size()) {
+                            endOfPixelsReached = true;
+                        }
+
+                    }
+                    //if the node is lonely like me, rmeove it
+                    if (pathLength == 1) {
+                        this.positions.remove(this.positions.size()-1);
+                        //System.out.println("found lonely pixel");
+
 
                     }
 
@@ -154,28 +135,25 @@ public class ImageService {
             }
 
         }
-        //the last element shall be headSwitch=true
-        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));  
-        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));                  
+        // the last element shall be headSwitch=true
+        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));
+        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));
 
     }
 
     void exportPositions() throws IOException {
+        //this function fills a TMP_Positions file for later use by the Main.main() function
 
-        PrintWriter f0 = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
+        PrintWriter a = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
 
-        f0.write("package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> write(){ArrayList<Position> a = new ArrayList<>();");
-
-        // fix stuff
-        for (Position b : this.positions) {;
-
-            // f0.println("["+b.x + ", " + b.y + ", " + b.headSwitch+"], ");
-            f0.println("a.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
-            //f0.println("posList.append( (" + b.x + ", " + b.y +") )");
+        a.write( "package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> write(){ArrayList<Position> a = new ArrayList<>();");
+        System.out.println(this.positions.size());
+        for (Position b : this.positions) {
+            a.println("a.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
+            //a.println("[" + b.x + ", " + b.y + ", " + b.headSwitch + "], ");
 
         }
-        f0.write("return a;}} ");
-        f0.close();
+        a.write("return a;}} ");
+        a.close();
     }
-
 }

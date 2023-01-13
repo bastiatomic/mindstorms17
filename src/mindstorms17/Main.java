@@ -5,16 +5,13 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 
-		// SOA applied here
-		// ATTENTION: the head is down at start;
+		
 		
 		// CHAPTER 1: init robot object
 		Robot myRobot = new Robot(0,0,true,
@@ -29,13 +26,8 @@ public class Main {
 		ImageService img1 = new ImageService();
 		img1.positions = TMP_Positions.write();
 
-		//TODO: if this stuff works, OPTIMISE !!! 
-		//TODO: first position shall be headSwitch true, because head down at the start after driveToHome()
-
+		//CHAPTER 3: init start drawing
 		
-		//CHAPTER 3: init start drawing //TODO: sometimes head-switch error; no "drive to x while head up"
-		
-
 		LCD.drawString("driving home", 0, 0);
 		LCD.drawString("for christmas", 1, 1);
 		myRobot.driveToHome(myRobot.headPos); // both speeds are very good //positive integer drive towards sensor
