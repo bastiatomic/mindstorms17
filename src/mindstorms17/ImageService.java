@@ -59,7 +59,7 @@ public class ImageService {
                 1, 0, // right
                 0, 1, // bottom
                 -1, 0, // left
-                -1, -1, // topleft
+              -1, -1, // topleft
                 1, -1, // topright
                 1, 1, // bottomright
                 -1, 1 // bottomleft
@@ -145,15 +145,26 @@ public class ImageService {
         //this function fills a TMP_Positions file for later use by the Main.main() function
 
         PrintWriter a = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
+        PrintWriter c = new PrintWriter(new FileWriter("src/mindstorms17/PYTHON_Positions.txt"));
 
         a.write( "package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> write(){ArrayList<Position> a = new ArrayList<>();");
         System.out.println(this.positions.size());
+        a.println("");
+        String PYTHON_BOOLEAN = "";
         for (Position b : this.positions) {
             a.println("a.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
-            //a.println("[" + b.x + ", " + b.y + ", " + b.headSwitch + "], ");
+
+            if(b.headSwitch){
+                PYTHON_BOOLEAN = "True";
+            } else{
+                PYTHON_BOOLEAN = "False";
+            }
+
+            c.println("[" + b.x + ", " + b.y + ", " + PYTHON_BOOLEAN + "], ");
 
         }
         a.write("return a;}} ");
         a.close();
+        c.close();
     }
 }

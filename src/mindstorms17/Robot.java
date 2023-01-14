@@ -9,22 +9,18 @@ import lejos.utility.Delay;
 
 public class Robot {
     Boolean headPos;
-    int realPosX;
-    int realPosY;
-    double exactPosX;
-    double exactPosY;
-    double thresholdX;
-    double thresholdY;
+    double realPosX;
+    double realPosY;
     RegulatedMotor chainMotor;
     RegulatedMotor wheelMotor;
     RegulatedMotor headMotor;
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
+    double thresholdX = 0;
+    double thresholdY = 0;
 
     public Robot(int a, int b, Boolean c,
             RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
-        this.exactPosX = a;
-        this.exactPosY = a;
         this.realPosX = a;
         this.realPosY = a;
         this.headPos = c;
@@ -33,11 +29,8 @@ public class Robot {
         this.touchSensor = f;
         this.colorSensor = g;
         this.headMotor = z;
-        this.thresholdX = 0;
-        this.thresholdY = 0;
-    }
+    } //TODO: kill unused variables
 
-    //TODO: wrong naming, headUp seems like moving up, but in reality it switches it
     void headUp() {
         if(headPos){
             headMotor.rotate(180);
@@ -60,96 +53,10 @@ public class Robot {
         Delay.msDelay(10);
     }
 
-    void move(int x, int y) { // distance in mm;
-        // WHATIS: I move the motors in two directions simultanesouly while respecting
-        // the offset it will generate
-
-        double rotationsNeededA = x / mindstorms17.Gear.chainGear();
-        double rotationsNeededB = y / mindstorms17.Gear.wheelGear();
-
-        // threshold start
-        this.thresholdX += (rotationsNeededA - (int) rotationsNeededA);
-        this.thresholdY += (rotationsNeededB - (int) rotationsNeededB);
-
-        // adding threshold (zero or one)
-        rotationsNeededA += (int) thresholdX;
-        rotationsNeededB += (int) thresholdY;
-
-        // removing excesshreshold (1+)
-        this.thresholdX -= (int) this.thresholdX;
-        this.thresholdY -= (int) this.thresholdY;
-
-        double speedA = 100; // magic number
-        double timeForLength = rotationsNeededA / speedA;
-        double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
-        
-        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0   
-    
-        /*
-         * What happens here: move both motors at each speed for 'timeForLength' seconds
-         * synchronized
-         */
-
-        this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
-        this.chainMotor.startSynchronization();
-        this.chainMotor.setSpeed((int) speedA);
-        this.wheelMotor.setSpeed((int) speedB);
-        this.chainMotor.rotate((int) rotationsNeededA); // WARNING: conversion to int
-        this.wheelMotor.rotate((int) rotationsNeededB);
-        // Delay.msDelay( (long) timeForLength*1000);
-        this.chainMotor.endSynchronization();
-        this.chainMotor.waitComplete();
-        this.wheelMotor.waitComplete();
-    }
-    
-    void moveToPosLEGACY(int x, int y) { // distance in mm;
-        // WHATIS: I move the motors in two directions simultanesouly while respecting
-        // the offset it will generate
-
-        double rotationsNeededA = this.realPosX - x / mindstorms17.Gear.chainGear();
-        double rotationsNeededB = this.realPosY - y / mindstorms17.Gear.wheelGear();
-
-        // threshold start
-        this.thresholdX += (rotationsNeededA - (int) rotationsNeededA);
-        this.thresholdY += (rotationsNeededB - (int) rotationsNeededB);
-
-        // adding threshold (zero or one)
-        rotationsNeededA += (int) this.thresholdX;
-        rotationsNeededB += (int) this.thresholdY;
-
-        // removing excesshreshold (1+)
-        this.thresholdX -= (int) this.thresholdX;
-        this.thresholdY -= (int) this.thresholdY;
-
-        double speedA = 100; // magic number
-        double timeForLength = rotationsNeededA / speedA;
-        double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
-        
-        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0   
-    
-        /*
-         * What happens here: move both motors at each speed for 'timeForLength' seconds
-         * synchronized
-         */
-        this.realPosX -= rotationsNeededA;
-        this.realPosY -= rotationsNeededB;
-
-        this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
-        this.chainMotor.startSynchronization();
-        this.chainMotor.setSpeed((int) speedA);
-        this.wheelMotor.setSpeed((int) speedB);
-        this.chainMotor.rotate((int) rotationsNeededA); // WARNING: conversion to int
-        this.wheelMotor.rotate((int) rotationsNeededB);
-        // Delay.msDelay( (long) timeForLength*1000);
-        this.chainMotor.endSynchronization();
-        this.chainMotor.waitComplete();
-        this.wheelMotor.waitComplete();
-    }
-
     void moveToPos(int x, int y){
 
         double newMoveX = this.realPosX - x;
-        double newMoveY = this.realPosY -y;
+        double newMoveY = this.realPosY - y;
 
         double rotationsNeededA = newMoveX / mindstorms17.Gear.chainGear();
         double rotationsNeededB = newMoveY / mindstorms17.Gear.wheelGear();
@@ -161,31 +68,26 @@ public class Robot {
         double timeForLength = rotationsNeededA / speedA;
         double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
         
-        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0   
+        if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0 
+        //TODO: this call requires that the previous is a DivisionZeroErro
     
-        /*
-         * What happens here: move both motors at each speed for 'timeForLength' seconds
-         * synchronized
-         */
         this.chainMotor.synchronizeWith(new RegulatedMotor[] { this.wheelMotor });
         this.chainMotor.startSynchronization();
         this.chainMotor.setSpeed((int) speedA);
         this.wheelMotor.setSpeed((int) speedB);
-        this.chainMotor.rotate((int) rotationsNeededA); // WARNING: conversion to int
-        this.wheelMotor.rotate((int) rotationsNeededB);
+        this.chainMotor.rotate((int) Math.round(rotationsNeededA)); // WARNING: conversion to int
+        this.wheelMotor.rotate((int) Math.round(rotationsNeededB));
         // Delay.msDelay( (long) timeForLength*1000);
         this.chainMotor.endSynchronization();
         this.chainMotor.waitComplete();
         this.wheelMotor.waitComplete();
     }
 
-    void driveToHome(boolean currentHeadPos) {
-        // what happens: first drive the head to touchSensor, THEN drive the paper to
-        // the lightSensor
-        if(currentHeadPos){ //headpos is down
-            headUp();
-        }
+    void driveToHome() {
 
+        headUp();
+
+        //move gearMotor
         SensorMode sensorMode = this.touchSensor.getTouchMode();
         RegulatedMotor m = this.chainMotor;
         m.setSpeed(20);
@@ -198,6 +100,7 @@ public class Robot {
         }
         m.stop();
 
+        //move wheelMotor
         Delay.msDelay(10);
         this.wheelMotor.setSpeed(50);
         SensorMode ambientSensorMode = this.colorSensor.getRedMode();
@@ -207,11 +110,12 @@ public class Robot {
             this.wheelMotor.backward();
             LCD.refresh();
             LCD.clear();
-            LCD.drawString("Intensity: " + sample1[0], 1, 1);
-            Delay.msDelay(100);
+            LCD.drawString("[RedMode] Intensity: " + sample1[0], 1, 1);
+            Delay.msDelay(10);
         }
-        // TODO: technical difference between Thread.sleep and Delay.msDelay
-        // sensor.close();
+        this.touchSensor.close();
+        this.colorSensor.close();
+        
         headDown();
     }
 

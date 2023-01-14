@@ -5,14 +5,19 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
+import lejos.utility.Delay;
+
 import java.io.IOException;
 
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-
+		//ATTENTION
+		//make sure you have read the readme before running anything :)
 		
-		
+		//TODO: recursive depth-first search, so u never really move the head to a "new" position e.g. "flood function"
+		//TODO: forget above todo
+		//TODO: stop lightSensor after driveToHome() to remove annoying light
 		// CHAPTER 1: init robot object
 		Robot myRobot = new Robot(0,0,true,
 				new EV3LargeRegulatedMotor(MotorPort.A), // chainMotor
@@ -21,23 +26,27 @@ public class Main {
 				new EV3TouchSensor(SensorPort.S1), // touchSensor
 				new EV3ColorSensor(SensorPort.S2)); // colorSensor
 
-		//CHAPTER 2: getting the image and processing it
+		//CHAPTER 2: getting the location file created by App.java
 		LCD.clear();LCD.drawString("Img processing ...", 0, 0);
 		ImageService img1 = new ImageService();
 		img1.positions = TMP_Positions.write();
 
 		//CHAPTER 3: init start drawing
-		
+		final long startTime = System.nanoTime();
+		LCD.clear();
 		LCD.drawString("driving home", 0, 0);
 		LCD.drawString("for christmas", 1, 1);
-		myRobot.driveToHome(myRobot.headPos); // both speeds are very good //positive integer drive towards sensor
+		myRobot.driveToHome(); // both speeds are very good //positive integer drive towards sensor
+
 		//CHAPTER 4: moving & printing to all positions
 		int a = 0;
 		for (Position b : img1.positions) {
-			//LCD.clear();
-			LCD.drawString("[" + a + "/" + img1.positions.size() + "]", 0, 1);
-			LCD.drawString("real: "+ myRobot.realPosX + ", " + myRobot.realPosY, 0, 2);
-			LCD.drawString("thres: "+myRobot.thresholdX + ", " + myRobot.thresholdY, 0, 3);
+			
+			int seconds = (int) ((System.nanoTime() - startTime)/1_000_000_000);
+			
+			//LCD.clear(); //TODO: test me
+			LCD.drawString("[Tour] " + a + "/" + img1.positions.size()+"     ", 0, 1);
+			LCD.drawString("[Time] " + seconds + " sec.", 0, 3);
 			LCD.drawString("Take a hike,", 0, 6);
 			LCD.drawString("be curious", 1, 7);
 
@@ -48,21 +57,16 @@ public class Main {
 
 			a++;
 
-			//Delay.msDelay(10);
 		}
 
+		Delay.msDelay(5000);
 		//CHAPTER 5: cleanup at the end of the printing
 		LCD.clear();
 		LCD.drawString("RESET ...", 0, 0);
-		//TODO: kill me because the head is always up at the end
-		if (myRobot.headPos) { //if down, move up
-			myRobot.headSwitch();
-		}
-
-		//TODO: maybe calculate required Y movement?
-		myRobot.move(0, 250);
 		
-		myRobot.headDown(); //move him down at the end
+		myRobot.headUp();
+		myRobot.moveToPos(0, 0);
+		myRobot.headDown();
 
 		myRobot.chainMotor.stop();
 		myRobot.wheelMotor.stop();
