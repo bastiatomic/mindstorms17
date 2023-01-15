@@ -2384,7 +2384,6 @@ list3_TYCOON_LOGO = [
 [141, 143, True]
 
 ]
-
 list4_TYCOON2 = [
 
 [64, 17, True], 
@@ -3661,7 +3660,6 @@ list4_TYCOON2 = [
 
 
 ]
-
 list5_TONY = [
 
     [68, 7, True], 
@@ -5184,6 +5182,7 @@ list5_TONY = [
 
 
 ]
+
 # The main game loop
 runningHead = True
 PRINT_COLOR = HEAD_DOWN_COLOR

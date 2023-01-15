@@ -65,7 +65,7 @@ public class Main {
 		LCD.drawString("RESET ...", 0, 0);
 		
 		myRobot.headUp();
-		myRobot.moveToPos(0, 0);
+		myRobot.moveToPos(150, 150);
 		myRobot.headDown();
 
 		myRobot.chainMotor.stop();

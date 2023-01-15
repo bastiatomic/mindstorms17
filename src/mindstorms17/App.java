@@ -16,14 +16,13 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         
-    	String fileName = "tony_helmet";
+    	String fileName = "2070_tycoon_logo_150";
 		ImageService img1 = new ImageService();
 		img1.load(ImageIO.read(new File("src/graphics/"+fileName+".png")));
 		img1.verify();
 		img1.canny();
-		
-		File outputfile2 = new File("src/graphics/"+fileName+"_CANNY.png");
-        ImageIO.write(img1.img_canny, "png", outputfile2);
+
+		img1.saveCanny();
 		
 		img1.positionCreator();
 		img1.exportPositions();

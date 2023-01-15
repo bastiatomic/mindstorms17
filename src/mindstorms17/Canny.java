@@ -1,46 +1,15 @@
 package mindstorms17;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.awt.Color;
 
-import javax.imageio.ImageIO;
  // @author Tom Gibara
- //stolen from http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
+ // stolen from http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
+ // slightly modified to make it more print-friendly
 
 public class Canny {
-
-    public static void main(String[] args) throws IOException {
-        
-        final String fileName = "tony_helmet";
-        final String fileType = "png";
-
-        BufferedImage in = ImageIO.read(new File("src/graphics/"+fileName+"."+fileType));
-
-		BufferedImage convertedImg = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_RGB);
-    	convertedImg.getGraphics().drawImage(in, 0, 0, null);
-        /*BufferedImage newImage = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_RGB);
-
-        Graphics2D g = newImage.createGraphics();
-        g.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-        g.dispose();
-
-        //File outputfile = new File("graphics/"+fileName+"_TYPE_ARGB.png");
-        //ImageIO.write(newImage, "png", outputfile);*/
-
-        Canny detector = new Canny();
-        detector.setSourceImage(convertedImg);
-        detector.process();
-        BufferedImage exportImage = detector.getEdgesImage();
-
-        File outputfile2 = new File("src/graphics/"+fileName+"_CANNY.png");
-        ImageIO.write(exportImage, "png", outputfile2);
-
-    }
-
+    
 	private final static float GAUSSIAN_CUT_OFF = 0.005f;
 	private final static float MAGNITUDE_SCALE = 100F;
 	private final static float MAGNITUDE_LIMIT = 1000F;
@@ -454,7 +423,6 @@ public class Canny {
 	}
 	
 	private void readLuminance() {
-		//TODO: the if statements mights be deleted, because the input is TYPE_INT_RGB only
 		int type = sourceImage.getType();
 		System.out.println(type);
 		System.out.println(type == BufferedImage.TYPE_INT_RGB);

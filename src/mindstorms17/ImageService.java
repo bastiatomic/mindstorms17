@@ -1,10 +1,13 @@
 package mindstorms17;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import lejos.hardware.lcd.LCD;
 
@@ -12,12 +15,18 @@ import java.awt.Color;
 
 public class ImageService {
 
+    String name;
     BufferedImage img;
     BufferedImage img_canny;
     ArrayList<Position> positions;
 
     ImageService() {
         this.positions = new ArrayList<>(); // empty constructor
+    }
+
+    ImageService(String a){
+        this.positions = new ArrayList<>(); // empty constructor
+        this.name = a;
     }
 
     void load(BufferedImage a) {
@@ -139,6 +148,13 @@ public class ImageService {
         this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));
         this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));
 
+    }
+
+    void saveCanny() throws IOException{
+
+        File outputfile2 = new File("src/graphics/"+this.name+"_CANNY.png");
+        ImageIO.write(this.img_canny, "png", outputfile2);
+    
     }
 
     void exportPositions() throws IOException {

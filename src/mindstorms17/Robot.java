@@ -16,11 +16,9 @@ public class Robot {
     RegulatedMotor headMotor;
     EV3TouchSensor touchSensor;
     EV3ColorSensor colorSensor;
-    double thresholdX = 0;
-    double thresholdY = 0;
 
     public Robot(int a, int b, Boolean c,
-            RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
+        RegulatedMotor d, RegulatedMotor e, RegulatedMotor z, EV3TouchSensor f, EV3ColorSensor g) {
         this.realPosX = a;
         this.realPosY = a;
         this.headPos = c;
@@ -33,17 +31,13 @@ public class Robot {
 
     void headUp() {
         if(headPos){
-            headMotor.rotate(180);
-            this.headPos = !this.headPos;
-            Delay.msDelay(10);
+            headSwitch();
         }
     }
 
     void headDown() {
         if(!headPos){
-            headMotor.rotate(180);
-            this.headPos = !this.headPos;
-            Delay.msDelay(10);
+            headSwitch();
         }
     }
 
@@ -66,8 +60,8 @@ public class Robot {
 
         double speedA = 100; // magic number
         double timeForLength = rotationsNeededA / speedA;
-        double speedB = rotationsNeededB / timeForLength; // TODO: this should create the same speed, maybe magic number
-        
+        double speedB = rotationsNeededB / timeForLength;
+
         if(timeForLength == 0) {speedB = 100;} // this affects if speedA = 0 
         //TODO: this call requires that the previous is a DivisionZeroErro
     
@@ -77,7 +71,6 @@ public class Robot {
         this.wheelMotor.setSpeed((int) speedB);
         this.chainMotor.rotate((int) Math.round(rotationsNeededA)); // WARNING: conversion to int
         this.wheelMotor.rotate((int) Math.round(rotationsNeededB));
-        // Delay.msDelay( (long) timeForLength*1000);
         this.chainMotor.endSynchronization();
         this.chainMotor.waitComplete();
         this.wheelMotor.waitComplete();
