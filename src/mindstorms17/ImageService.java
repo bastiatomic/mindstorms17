@@ -6,26 +6,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-
-import lejos.hardware.lcd.LCD;
-
 import java.awt.Color;
 
-public class ImageService {
+class ImageService {
 
     String name;
     BufferedImage img;
     BufferedImage img_canny;
-    ArrayList<Position> positions;
+    ArrayList<Position> positions = new ArrayList<>();
 
-    ImageService() {
-        this.positions = new ArrayList<>(); // empty constructor
-    }
+    ImageService() {}
 
-    ImageService(String a){
-        this.positions = new ArrayList<>(); // empty constructor
+    ImageService(String a) {
         this.name = a;
     }
 
@@ -34,10 +27,9 @@ public class ImageService {
 
     }
 
-    void verify() {
-        if (img.getWidth() > 150 || img.getHeight() > 150) {
-            LCD.drawString("img invalid", 0, 0);
-            System.exit(-1);
+    void verify() throws Exception {
+        if (img.getWidth() != 150 || img.getHeight() != 150) {
+            throw new Exception("Image size invalid. Images needs 150x150 pixels.");
         }
     }
 
@@ -58,28 +50,25 @@ public class ImageService {
          * Flow:
          * get a list of all black pixels
          * reduce adjacent pixels in 4-directional (x-1, y+1 etc)
-         * connect the remaining nodes in all 8 directions
          */
         int WHITE = new Color(255, 255, 255).getRGB();
         int BLACK = new Color(20, 20, 20).getRGB(); // or 20,20,20
- 
-        int[] looper = { // TODO: check adjacent first and then diagonal to prevent misuse
+
+        int[] looper = { // HOW IT WORKS: check adjacent first and then diagonal to prevent misuse
                 0, -1, // top
                 1, 0, // right
                 0, 1, // bottom
                 -1, 0, // left
-              -1, -1, // topleft
+                -1, -1, // topleft
                 1, -1, // topright
                 1, 1, // bottomright
                 -1, 1 // bottomleft
         };
 
         // I NEED A CANNY IMAGE
-        BufferedImage img = this.img_canny; //TODO: extract me
-        int HEIGHT = img.getHeight();
-        int WIDTH = img.getWidth();
+        int HEIGHT = this.img_canny.getHeight();
+        int WIDTH = this.img_canny.getWidth();
         boolean endOfPixelsReached = false;
-        int i = 0;
         boolean headSwitchNow = false;
         int arraySizeLimiter = 0;
 
@@ -91,12 +80,11 @@ public class ImageService {
             for (int x = 0; x < WIDTH; x++) {
 
                 // found first node
-                if (img.getRGB(x, y) == BLACK) {
+                if (this.img_canny.getRGB(x, y) == BLACK) {
                     endOfPixelsReached = false;
                     headSwitchNow = true;
-                    // System.out.println("found start at: " + x+", "+y);
+                    // found start
                     this.positions.add(new Position(x, y, true));
-                    //System.out.println("found start");
                     pathLength = 0;
 
                     current_pos[0] = x;
@@ -108,18 +96,19 @@ public class ImageService {
                         pathLength++;
                         // loop over all neighbors
 
-                        for (i = 0; i < looper.length; i += 2) {
+                        for (int i = 0; i < looper.length; i += 2) {
                             current_checking_pos[0] = current_pos[0] + looper[i];
                             current_checking_pos[1] = current_pos[1] + looper[i + 1];
 
-                            if (img.getRGB(current_checking_pos[0], current_checking_pos[1]) == BLACK) {
+                            if (this.img_canny.getRGB(current_checking_pos[0], current_checking_pos[1]) == BLACK) {
+                                //found neighbor
                                 this.positions.add(
                                         new Position(current_checking_pos[0], current_checking_pos[1], headSwitchNow));
                                 headSwitchNow = false; // first call will set it true
-                                img.setRGB(current_checking_pos[0], current_checking_pos[1], WHITE);
+                                this.img_canny.setRGB(current_checking_pos[0], current_checking_pos[1], WHITE);
                                 current_pos[0] = current_checking_pos[0];
                                 current_pos[1] = current_checking_pos[1];
-                                //System.out.println("found neighbor");
+                                
                                 break;
                             }
 
@@ -131,12 +120,9 @@ public class ImageService {
                         }
 
                     }
-                    //if the node is lonely like me, rmeove it
+                    // if the node is lonely like me, rmeove it
                     if (pathLength == 1) {
-                        this.positions.remove(this.positions.size()-1);
-                        //System.out.println("found lonely pixel");
-
-
+                        this.positions.remove(this.positions.size() - 1);
                     }
 
                 }
@@ -145,42 +131,36 @@ public class ImageService {
 
         }
         // the last element shall be headSwitch=true
-        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));
-        this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));
+        this.positions.add(new Position(
+        		this.positions.get(this.positions.size()-1).x,
+        		this.positions.get(this.positions.size()-1).y,
+        		true));
+        //this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));
+        //this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));
+        //TODO: produces illegal output if last pixel is pathlength=1
 
     }
 
-    void saveCanny() throws IOException{
+    void saveCanny() throws IOException {
 
-        File outputfile2 = new File("src/graphics/"+this.name+"_CANNY.png");
+        File outputfile2 = new File("src/graphics/" + this.name + "_CANNY.png");
         ImageIO.write(this.img_canny, "png", outputfile2);
-    
+
     }
 
     void exportPositions() throws IOException {
-        //this function fills a TMP_Positions file for later use by the Main.main() function
+        // this function fills a TMP_Positions file for later use by the Main.main()
+        // function
 
         PrintWriter a = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
-        PrintWriter c = new PrintWriter(new FileWriter("src/mindstorms17/PYTHON_Positions.txt"));
 
-        a.write( "package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> write(){ArrayList<Position> a = new ArrayList<>();");
-        System.out.println(this.positions.size());
+        a.write("package mindstorms17; import java.util.ArrayList;public class TMP_Positions{static ArrayList<Position> fetchData(){ArrayList<Position> a = new ArrayList<>();");
         a.println("");
-        String PYTHON_BOOLEAN = "";
         for (Position b : this.positions) {
             a.println("a.add( new Position(" + b.x + ", " + b.y + ", " + b.headSwitch + ")); ");
-
-            if(b.headSwitch){
-                PYTHON_BOOLEAN = "True";
-            } else{
-                PYTHON_BOOLEAN = "False";
-            }
-
-            c.println("[" + b.x + ", " + b.y + ", " + PYTHON_BOOLEAN + "], ");
 
         }
         a.write("return a;}} ");
         a.close();
-        c.close();
     }
 }

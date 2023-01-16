@@ -424,8 +424,6 @@ public class Canny {
 	
 	private void readLuminance() {
 		int type = sourceImage.getType();
-		System.out.println(type);
-		System.out.println(type == BufferedImage.TYPE_INT_RGB);
 		if (type == BufferedImage.TYPE_INT_RGB || type == BufferedImage.TYPE_INT_ARGB) {
 			int[] pixels = (int[]) sourceImage.getData().getDataElements(0, 0, width, height, null);
 			for (int i = 0; i < picsize; i++) {
