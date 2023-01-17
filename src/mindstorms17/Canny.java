@@ -7,6 +7,7 @@ import java.awt.Color;
  // @author Tom Gibara
  // stolen from http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
  // slightly modified to make it more print-friendly
+ // Canny is part of ImageService but not included, because it's external code
 
 public class Canny {
     

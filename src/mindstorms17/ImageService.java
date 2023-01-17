@@ -46,11 +46,9 @@ class ImageService {
     }
 
     void positionCreator() {
-        /*
-         * Flow:
-         * get a list of all black pixels
-         * reduce adjacent pixels in 4-directional (x-1, y+1 etc)
-         */
+        // This is a depth-first-search approach on finding connected nodes to reduce the need for head switches
+        // and make the image more eye-pleasing
+
         int WHITE = new Color(255, 255, 255).getRGB();
         int BLACK = new Color(20, 20, 20).getRGB(); // or 20,20,20
 
@@ -65,7 +63,6 @@ class ImageService {
                 -1, 1 // bottomleft
         };
 
-        // I NEED A CANNY IMAGE
         int HEIGHT = this.img_canny.getHeight();
         int WIDTH = this.img_canny.getWidth();
         boolean endOfPixelsReached = false;
@@ -91,11 +88,11 @@ class ImageService {
                     current_pos[1] = y;
 
                     // the fist one shall be headSwitch=true to move the head down again
-                    while (!endOfPixelsReached) { // search until no black neighbors
+                    while (!endOfPixelsReached) { // search until no black neighbors (DFS alogrithm)
                         arraySizeLimiter = this.positions.size();
                         pathLength++;
-                        // loop over all neighbors
-
+                       
+                         // loop over all neighbors
                         for (int i = 0; i < looper.length; i += 2) {
                             current_checking_pos[0] = current_pos[0] + looper[i];
                             current_checking_pos[1] = current_pos[1] + looper[i + 1];
@@ -114,13 +111,13 @@ class ImageService {
 
                         }
 
-                        // end of current "black line" reached
+                        // end of current "black line" reached (in the last iteration no more black pixels were added)
                         if (arraySizeLimiter == this.positions.size()) {
                             endOfPixelsReached = true;
                         }
 
                     }
-                    // if the node is lonely like me, rmeove it
+                    // if the node is lonely like me, rmeove it (single pixels are bad for DFS)
                     if (pathLength == 1) {
                         this.positions.remove(this.positions.size() - 1);
                     }
@@ -135,9 +132,6 @@ class ImageService {
         		this.positions.get(this.positions.size()-1).x,
         		this.positions.get(this.positions.size()-1).y,
         		true));
-        //this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], false));
-        //this.positions.add(new Position(current_checking_pos[0], current_checking_pos[1], true));
-        //TODO: produces illegal output if last pixel is pathlength=1
 
     }
 
@@ -149,8 +143,7 @@ class ImageService {
     }
 
     void exportPositions() throws IOException {
-        // this function fills a TMP_Positions file for later use by the Main.main()
-        // function
+        // this function fills a TMP_Positions file for later use by Main.main()
 
         PrintWriter a = new PrintWriter(new FileWriter("src/mindstorms17/TMP_Positions.java"));
 
