@@ -55,16 +55,12 @@ public class Main {
 
 		}
 
-		Delay.msDelay(5000);
 		// CHAPTER 5: cleanup at the end of the printing
 		LCD.clear();
 		LCD.drawString("RESET ...", 0, 0);
 
-		Delay.msDelay(5000);
 		myRobot.headUp();
-		Delay.msDelay(5000);
 		myRobot.moveToPos(0,0);
-		Delay.msDelay(5000);
 		myRobot.headDown();
 
 		myRobot.chainMotor.stop();
